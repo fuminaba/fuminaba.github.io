@@ -1,0 +1,136 @@
+
+@font-face {
+    font-family: 'pokemon';
+    src: url(../Fonts/pokemon-font/PokemonGb-RAeo.ttf) format(truetype);
+}
+
+body {
+    margin:0;
+    padding:0;
+    font-family:'pokemon';
+    background-color: #333;
+    background-image: url(../Images/pokemon_mailbox_crop.jpg);
+}
+
+/* NAVIGATION BAR */
+nav {
+    margin: 0px;
+    padding: 0px;
+}
+
+nav > ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #222;
+}
+
+nav > ul > li {
+    float: left;
+}
+
+nav > ul > li > a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+nav > ul > li > a:hover {
+    background-color: #111;
+    color: white;
+}
+
+nav .active {
+    font-weight: bold;
+    background-color: #111;/*rgb(0,250,130); /*forestgreen;*/
+    color: white;
+}
+
+/* Main INTRO */
+main {
+    margin:10px;
+    
+}
+
+main > .Intro-Main-Parent {
+    overflow:hidden;
+    color: black;
+    padding: 25px;
+    border: 5px solid white;
+    width: 90%;
+    margin: 5% auto;
+    background-color: rgba(200,200,200,0.6);
+}
+
+main > .Intro-Main-Parent > .standard {
+    display: inline-block;
+    vertical-align: middle;
+    width:60%;
+}
+
+main > .Intro-Main-Parent > .standard > h3 {
+    color: black;
+}
+
+main > .Intro-Main-Parent > .profile-image {
+    display: inline-block;
+    vertical-align: middle;
+    width: 450px;
+    border:5px solid white;
+}
+
+main > .Intro-Main-Parent > .profile-image > img {
+    width: 450px;
+}
+
+.console {
+    width: 700px;
+    /*height: 250px;*/
+    box-sizing: border-box;
+    margin: auto;
+    display: inline-block;
+    vertical-align: middle;
+    overflow:hidden;
+    border-radius:10px;
+  }
+  
+  .console header {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: #555;
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+    color: #DDD;
+  }
+  
+  .console .consolebody {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    box-sizing: border-box;
+    padding: 20px;
+    /*height: calc(100% - 40px);*/
+    overflow-y: scroll;
+    background-color: #000;
+    color: aliceblue;
+  }
+  
+  .console .consolebody a p {
+    line-height: 1.5rem;
+    transition: left 0.5s;
+  }
+
+  .console .consolebody a p:hover {
+    line-height: 1.5rem;
+    transform: translate(10px, 0);
+    color: aquamarine;
+  }
+
+  .console .consolebody a:visited, .console .consolebody a:link {
+    text-decoration: none;
+    color:aliceblue;
+  }

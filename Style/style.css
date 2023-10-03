@@ -1,6 +1,106 @@
-#IndexMain {
-    width:100vw;
-    height:100vh;
-    background-color: bisque;
-    color:aquamarine;
+/* Define Custom Fonts */
+@font-face {
+    font-family: "Genjiro";
+    src: url(../Fonts/genjiro-font/Genjiro-JRymx.otf) format(opentype)
+}
+
+@font-face {
+    font-family: "darling-script";
+    src: url(../Fonts/darling-font/DarlingtonDemo-z8xjG.ttf) format(truetype)
+}
+
+@font-face {
+    font-family: 'better-grade';
+    src: url(../Fonts/better-grade-font/BetterGrade-519DV.ttf) format(truetype)
+}
+
+@font-face {
+    font-family: 'pokemon';
+    src: url(../Fonts/pokemon-font/PokemonGb-RAeo.ttf) format(truetype);
+}
+
+body {
+    margin:0px;
+    padding:0px;
+    background-color: #333;
+    overflow: hidden;
+}
+
+/* NAVIGATION BAR */
+.title_navbar {
+    margin: 0px;
+    padding: 0px;
+}
+
+.title_navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #222;
+}
+
+.title_navbar li {
+    float: left;
+}
+
+.title_navbar li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+.title_navbar li a:hover {
+    background-color: #111;
+    color: white;
+}
+
+.title_navbar .active {
+    font-weight: bold;
+    background-color: rgb(0,250,130); /*forestgreen;*/
+    color: black;
+}
+
+/* INTRO BLOCK */
+.Intro_block {
+    height: 75%;
+    width: 75%;
+    display:inline;
+    font-family: 'pokemon';
+    color:white;
+    background-color: antiquewhite;
+
+}
+
+/* > INTRO TEXT */
+.Intro_block > .IntroText {
+    margin-top: 100px;
+    margin-left: 100px;
+}
+
+.Intro_block > .IntroText h1 {
+    color: rgb(0,250,130);
+    font-size: 48px;
+    margin-bottom: 0px;
+}
+
+.Intro_block > .IntroText h2 {
+    font-size: 18px;
+}
+
+.Intro_block > .IntroText {
+    float: left;
+}
+
+/* > INTRO IMAGE */
+
+.Intro_block > .IntroImage > figure {
+    font-size: 12px;
+}
+
+.Intro_block > .IntroImage > figure > img {
+    width:500px;
 }
