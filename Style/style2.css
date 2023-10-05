@@ -63,7 +63,14 @@ main > .Intro-Main-Parent {
     border: 5px solid white;
     width: 90%;
     margin: 5% auto;
-    background-color: rgba(200,200,200,0.6);
+    background-color: rgba(200,200,200,0.75);
+}
+
+main > .Intro-Main-Parent > .TextBlock {
+    border: 5px solid white;
+    background-color: rgba(250,250,250, 0.8);
+    padding: 5px 25px;
+    line-height: 1.5;
 }
 
 main > .Intro-Main-Parent > .standard {
@@ -87,6 +94,10 @@ main > .Intro-Main-Parent > .profile-image > img {
     width: 450px;
 }
 
+main > .Intro-Main-Parent > p {
+    line-height: 1.5;
+}
+
 .console {
     width: 700px;
     /*height: 250px;*/
@@ -97,8 +108,17 @@ main > .Intro-Main-Parent > .profile-image > img {
     overflow:hidden;
     border-radius:10px;
   }
+.console2 {
+    /*height: 250px;*/
+    box-sizing: border-box;
+    margin: auto;
+    display: inline-block;
+    vertical-align: middle;
+    overflow:hidden;
+    border-radius:10px;
+}
   
-  .console header {
+  .console header, .console2 header {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     background-color: #555;
@@ -108,7 +128,7 @@ main > .Intro-Main-Parent > .profile-image > img {
     color: #DDD;
   }
   
-  .console .consolebody {
+  .console .consolebody, .console2 .consolebody {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     box-sizing: border-box;
@@ -119,18 +139,18 @@ main > .Intro-Main-Parent > .profile-image > img {
     color: aliceblue;
   }
   
-  .console .consolebody a p {
+  .console .consolebody a p, .concole2 .consolebody a p {
     line-height: 1.5rem;
     transition: left 0.5s;
   }
 
-  .console .consolebody a p:hover {
+  .console .consolebody a p:hover, .console2 .consolebody a p:hover {
     line-height: 1.5rem;
     transform: translate(10px, 0);
     color: aquamarine;
   }
 
-  .console .consolebody a:visited, .console .consolebody a:link {
+  .console .consolebody a:visited, .console .consolebody a:link, .console2 .consolebody a:visited, .console2 .consolebody a:link {
     text-decoration: none;
     color:aliceblue;
   }
