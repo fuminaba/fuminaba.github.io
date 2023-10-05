@@ -60,7 +60,8 @@ main > .Intro-Main-Parent {
     overflow:hidden;
     color: black;
     padding: 25px;
-    border: 5px solid white;
+    border: 5px solid royalblue;
+    border-radius:10px;
     width: 90%;
     margin: 5% auto;
     background-color: rgba(200,200,200,0.75);
