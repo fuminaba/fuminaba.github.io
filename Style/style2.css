@@ -7,9 +7,10 @@
 body {
     margin:0;
     padding:0;
-    font-family:'pokemon';
-    background-color: #333;
-    background-image: url(../Images/pokemon_mailbox_crop.jpg);
+    /*font-family:'pokemon';*/
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: rgba(220, 222, 230,0.7);
+    background-image: url(../Images/BG.png);
 }
 
 /* NAVIGATION BAR */
@@ -60,11 +61,13 @@ main > .Intro-Main-Parent {
     overflow:hidden;
     color: black;
     padding: 25px;
-    border: 5px solid royalblue;
     border-radius:10px;
     width: 90%;
     margin: 5% auto;
-    background-color: rgba(200,200,200,0.75);
+    /*background-color: rgba(140,82,196,0.75);
+    /*color: rgb(202,239,244);*/
+    background-color: rgba(255,255,255, 0.75);
+
 }
 
 main > .Intro-Main-Parent > .TextBlock {
@@ -84,13 +87,6 @@ main > .Intro-Main-Parent > .standard > h3 {
     color: black;
 }
 
-main > .Intro-Main-Parent > .profile-image {
-    display: inline-block;
-    vertical-align: middle;
-    width: 450px;
-    border:5px solid white;
-}
-
 main > .Intro-Main-Parent > .profile-image > img {
     width: 450px;
 }
@@ -100,6 +96,7 @@ main > .Intro-Main-Parent > p {
 }
 
 .console {
+    font-family: 'Courier New';
     width: 700px;
     /*height: 250px;*/
     box-sizing: border-box;
@@ -155,3 +152,46 @@ main > .Intro-Main-Parent > p {
     text-decoration: none;
     color:aliceblue;
   }
+
+
+#inline-pillars ul  {
+    display: inline-block;
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+.Intro-Main-Parent .colA {
+    width: 25%;
+    position: static;
+    float: left;
+}
+
+.Intro-Main-Parent .colB {
+    position: static;
+    width: 65%;
+    float: left;
+}
+
+.callout {
+    background-color: rgba(140, 82,196, 0.8);
+    float: left;
+    padding: 10px 25px;
+    border-radius: 5px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    margin: 5px 10px;
+}
+.callout p {
+    color: white;
+    text-decoration: none;
+    float: left;
+}
+
+.CV {
+    text-align: center;
+}
+.contact-images img {
+    padding: 0px 10px
+}

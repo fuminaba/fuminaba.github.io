@@ -1,0 +1,55 @@
+@font-face {
+    font-family: 'pokemon';
+    src: url(../Fonts/pokemon-font/PokemonGb-RAeo.ttf) format(truetype);
+}
+
+body {
+    margin:0;
+    padding:0;
+    /*font-family:'pokemon';*/
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: white;
+    /*background-image: url(../Images/pokemon_mailbox_crop.jpg);*/
+}
+
+/* NAVIGATION BAR */
+nav {
+    margin: 0px;
+    padding: 0px;
+}
+
+nav > ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #222;
+}
+
+nav > ul > li {
+    float: left;
+}
+
+nav > ul > li > a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+nav > ul > li > a:hover {
+    background-color: #111;
+    color: white;
+}
+
+nav .active {
+    font-weight: bold;
+    background-color: #111;/*rgb(0,250,130); /*forestgreen;*/
+    color: white;
+}
+
+.intro-panel {
+    display: inline-block;
+}
