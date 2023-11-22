@@ -189,9 +189,29 @@ main > .Intro-Main-Parent > p {
     float: left;
 }
 
-.CV {
+.Intro-Main-Parent.CV {
     text-align: center;
+    background-color: rgba(255,255,255,0.95);
+
+}
+.Intro-Main-Parent.CV-sub {
+    background-color: rgba(255,255,255,0.95);
 }
 .contact-images img {
     padding: 0px 10px
+}
+
+.Intro-Main-Parent.CV-sub h3 {
+    text-align: center;
+}
+
+.Intro-Main-Parent .left-text {
+    float:left;
+    
+}
+.Intro-Main-Parent .right-text {
+    float:right;
+}
+.cv-description {
+    clear: both;
 }
