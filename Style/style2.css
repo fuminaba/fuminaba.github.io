@@ -197,6 +197,11 @@ main > .Intro-Main-Parent > p {
 .Intro-Main-Parent.CV-sub {
     background-color: rgba(255,255,255,0.95);
 }
+
+.Intro-Main-Parent.CV-sub h2 {
+    text-align: center;
+}
+
 .contact-images img {
     padding: 0px 10px
 }
@@ -214,4 +219,8 @@ main > .Intro-Main-Parent > p {
 }
 .cv-description {
     clear: both;
+}
+
+.cv-description .time-range {
+    color: #444;
 }
