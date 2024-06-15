@@ -1,10 +1,15 @@
+@font-face {
+    font-family: poke;
+    src: url(../Fonts/pokemon-font/PokemonGb-RAeo.ttf);
+  }
+
 body {
     margin:0;
     padding:0;
     /*font-family:'pokemon';*/
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     background-color: rgba(220, 222, 230,0.7);
-    background-image: url(../Images/BG.png);
+    /* background-image: url(../Images/BG.png); */
 }
 
 /* NAVIGATION BAR */
@@ -46,10 +51,42 @@ nav .active {
 }
 
 /* Main INTRO */
-main {
-    margin:10px;
-    
+main > .Intro-Banner {
+    overflow: hidden;
+    color: black;
+    padding: 25px;
+    border-radius: 10px;
+    width: 90%;
+    margin: 50px auto;
+    background-color: rgba(255,255,255, 0.75);
 }
+
+main > .Intro-Banner > .Intro-Banner-Content {
+    display: grid;
+    place-content: center;
+    text-align: center;
+}
+
+main > .Intro-Banner > .Intro-Banner-Content > h1 {
+    font-size: 82px;
+    font-family: poke;
+}
+
+main > .Intro-Banner > .Banner-Content > .img-container {
+    float: left;
+    margin: 0px 10px;
+}
+main > .Intro-Banner > .Banner-Content > .txt-container {
+    margin: 0px 10px;
+}
+
+/* main > .Intro-Banner > .Content-Banner > div {
+    float: left;
+    padding: 10px;
+    margin: 10px;
+} */
+
+/*OLD STUFF */
 
 main > .Main-Parent {
     overflow:hidden;
