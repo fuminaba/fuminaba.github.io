@@ -1,0 +1,7 @@
+# For local testing only
+Gemfile
+Gemfile.lock
+_site
+
+# Draft files
+*.docx

@@ -1,0 +1,25 @@
+title: Fumi Inaba
+email: [finaba@bccrc.com]
+description: >- 
+  Personal website and research portfolio.
+baseurl: ""
+url: "https://yourusername.github.io"
+github_username: fuminaba
+
+theme: minima
+plugins:
+  - jekyll-feed
+
+nav_pages:
+  - title: Home
+    url: /
+  - title: Research
+    url: /research
+  - title: News
+    url: /all-posts.md
+  - title: Publications
+    url: /publications
+  # - title: Blog
+  #   url: /blog
+paginate: 10  # Number of posts per page
+paginate_path: "/_posts/page:num"
