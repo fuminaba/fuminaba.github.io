@@ -1,11 +1,10 @@
 ---
 layout: default
 title: Research
+permalink: /research/
 ---
 
 # Research Interests
-
-### Key Words: Multiple Instance Learning; Image Analysis;
 
 I work at the intersection of [fields], with a focus on:
 - Bullet point 1

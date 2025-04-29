@@ -14,11 +14,11 @@ nav_pages:
   - title: Home
     url: /
   - title: Research
-    url: /research
+    url: /research/
   - title: News
-    url: /all-posts.md
+    url: /news/
   - title: Publications
-    url: /publications
+    url: /publications/
   # - title: Blog
   #   url: /blog
 paginate: 10  # Number of posts per page

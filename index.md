@@ -1,6 +1,7 @@
 ---
 layout: default-sidebar
 title: Home
+permalink: /
 ---
 
 {% include sidebar.html %}
