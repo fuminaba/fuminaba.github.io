@@ -5,12 +5,10 @@ title: Research
 
 # Research Interests
 
-### Key Words: Multiple Instance Learning; Image Analysis;
-
 I work at the intersection of [fields], with a focus on:
-- Bullet point 1
-- Bullet point 2
-- Bullet point 3
+- Early detection
+- Precision oncology
+- Prognosis
 
 ---
 
