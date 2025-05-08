@@ -26,27 +26,46 @@ nav_pages:
   #   url: /blog
 
 # Pagination V2 settings
+# In your _config.yml
+# ... (other settings) ...
+
 pagination:
   enabled: true
-  per_page: 5 # Or your desired number of posts per page
-  permalink: '/page/:num/' # How subsequent pages will be linked
+  per_page: 5
+  permalink: '/page/:num/' # Global pagination permalink (can be overridden)
   title: ':title - page :num'
   limit: 0
   sort_field: 'date'
   sort_reverse: true
-  # Optional: Configure for specific collections or pages
-  # collection: 'posts' # Default is posts
-  # Settings for the 'news' page
+
   autopages:
     enabled: true
-    collections: # You might not need this if 'posts' is your news
+    collections:
       posts:
         enabled: true
-        permalink: '/news/page/:num/' # Permalink for news pagination
-        slugify:
-          mode: 'pretty'
-        title: 'News - Page :num' # Title for paginated news pages
-        layouts: 
-          - 'news_paginated.html' # A new layout file for the news listing
-        # Required if you want your /news/index.html to be the first page
-        # and then /news/page/2/, /news/page/3/ etc.
+        # This tells autopages to use the 'news_paginated.html' layout
+        layouts:
+          - 'news_paginated.html'
+        # This is the permalink for pages 2, 3, etc.
+        # The plugin will infer the base for page 1 from this.
+        permalink: '/news/page/:num/'
+        # Title for pages 2, 3, etc.
+        title: 'News - Page :num'
+        # Title for the first page (e.g., /news/)
+        first_page_title: 'News' # Important for the generated /news/index.html
+        # This ensures that the generated files are actually written to the _site directory
+        output: true 
+        # This section helps control the path for the first page if needed,
+        # often it's inferred correctly but being explicit can help.
+        # The `slugify` mode 'pretty' usually results in /collection_name/
+        # so for 'posts' it might default to /posts/ if not overridden.
+        # Since your permalink for subsequent pages is /news/page/:num/,
+        # it *should* try to make the first page /news/
+        # Let's ensure the slug for the 'posts' collection when autopaged is treated as 'news'
+        # This might not be strictly necessary if permalink above is clear, but can help guide it.
+        # slugify:
+        #   mode: 'pretty' 
+        #   collection_field: 'title' # or some other field if you want to base slug on collection metadata
+        #   collection_slugs:
+        #     posts: 'news' # This tells it to treat the 'posts' collection as if its base slug is 'news' for autopaging.
+                           # This is more advanced and might not be needed. The permalink pattern usually dictates it.

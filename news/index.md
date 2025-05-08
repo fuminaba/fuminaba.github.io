@@ -7,4 +7,5 @@ permalink: /news/
 pagination:
   enabled: true
   collection: posts # Assuming your news items are 'posts'
+nav_order: 4
 ---

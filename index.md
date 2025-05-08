@@ -2,6 +2,7 @@
 layout: default-sidebar
 title: Home
 permalink: /
+nav_order: 1
 ---
 
 
