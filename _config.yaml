@@ -17,11 +17,11 @@ nav_pages:
   - title: Home
     url: /
   - title: Research
-    url: /research
+    url: /research/
   - title: News
     url: /news/index
   - title: Publications
-    url: /publications
+    url: /publications/
   # - title: Blog
   #   url: /blog
 
