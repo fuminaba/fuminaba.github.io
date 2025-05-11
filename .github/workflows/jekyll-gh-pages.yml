@@ -17,7 +17,7 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.1' # Or the Ruby version compatible with your gems. Check your Gemfile.lock or github-pages gem version.
+          ruby-version: '3.3.4' # Or the Ruby version compatible with your gems. Check your Gemfile.lock or github-pages gem version.
           bundler-cache: true # Runs 'bundle install' and caches installed gems automatically
 
       - name: Setup Pages
