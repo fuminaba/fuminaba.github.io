@@ -5,11 +5,8 @@ permalink: /
 nav_order: 1
 ---
 
-
-
 ## Biography
 
-<img src="/assets/fumi_face.jpg" alt="drawing" width="175" style = 'float:right; margin-left: 25px'/>
 <p style = "text-align: justify;">
 
 My journey into leveraging <b>data science for healthcare</b> began with a foundational interest in improving patient care and a proactive desire to gain hands-on research experience. Starting as a volunteer in a biomedical research setting, I quickly recognized the potential of computational methods in healthcare accessibility and quality. This realization sparked a passion for machine learning, leading me to pursue self-directed learning in programming and data analysis alongside my initial experiences.
@@ -31,4 +28,3 @@ A priority for my research is translating complex data into clinically meaningfu
 
 [Learn about my research →](/research/research_index.md)
 
-{% include sidebar.html %}

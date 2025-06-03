@@ -1,43 +1,43 @@
-  <style>
-    .page-content .wrapper {
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .main-content-with-sidebar {
-      width: 70%;
-      float: left;
-      padding-right: 30px;
-    }
-    
-    #sidebar-right {
-      width: 25%;
-      position: absolute;
-      right: 0;
-      top: 0;
-      bottom: 0;
-      padding: 15px;
-      border-left: 1px solid #eee;
-      background: #f9f9f9;
-      min-height: 100%;
-    }
-    
-    @media screen and (max-width: 800px) {
-      .main-content-with-sidebar {
-        width: 100%;
-        float: none;
-        padding-right: 0;
-      }
-      
-      #sidebar-right {
-        position: relative;
-        width: 100%;
-        margin-top: 30px;
-        border-left: none;
-        border-top: 1px solid #eee;
-      }
-    }
-  </style>
+<style>
+.page-content .wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+#sidebar-left {
+  width: 15%;
+  float: left;
+  padding: 15px;
+  background: #f9f9f9;
+  border-right: 1px solid #eee;
+}
+
+.main-content-with-sidebar {
+  width: 50%;
+  float: left;
+  padding: 0 20px;
+}
+
+#sidebar-right {
+  width: 15%;
+  float: left;
+  padding: 15px;
+  background-color: #f0f0f0;
+  border-left: 1px solid #ccc;
+}
+
+@media screen and (max-width: 800px) {
+  #sidebar-left,
+  .main-content-with-sidebar,
+  #sidebar-right {
+    width: 100%;
+    float: none;
+  }
+}
+</style>
+
   
   <div id="sidebar-right">
     <h3>Recent Posts</h3>

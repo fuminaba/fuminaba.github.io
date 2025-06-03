@@ -22,7 +22,13 @@ nav_pages:
     url: /publications/
   - title: News
     url: /news/
+  - title: Wiki
+    url: /wiki/
 
+collections:
+  wiki: # This defines your 'blogs' collection
+    output: true # Set to true if you want individual blog post pages to be generated
+    permalink: /wiki/:year/:month/:day/:title.html
 # Pagination V2 settings
 # In your _config.yml
 # ... (other settings) ...
@@ -43,7 +49,7 @@ pagination:
         enabled: true
         # This tells autopages to use the 'news_paginated.html' layout
         layouts:
-          - 'news_paginated.html'
+          - 'autopage_posts.html'
         # This is the permalink for pages 2, 3, etc.
         # The plugin will infer the base for page 1 from this.
         permalink: '/news/page/:num/'
@@ -54,16 +60,16 @@ pagination:
         # This ensures that the generated files are actually written to the _site directory
         output: true 
         # This section helps control the path for the first page if needed,
-        # often it's inferred correctly but being explicit can help.
-        # The `slugify` mode 'pretty' usually results in /collection_name/
-        # so for 'posts' it might default to /posts/ if not overridden.
-        # Since your permalink for subsequent pages is /news/page/:num/,
-        # it *should* try to make the first page /news/
-        # Let's ensure the slug for the 'posts' collection when autopaged is treated as 'news'
-        # This might not be strictly necessary if permalink above is clear, but can help guide it.
-        # slugify:
-        #   mode: 'pretty' 
-        #   collection_field: 'title' # or some other field if you want to base slug on collection metadata
-        #   collection_slugs:
-        #     posts: 'news' # This tells it to treat the 'posts' collection as if its base slug is 'news' for autopaging.
-                           # This is more advanced and might not be needed. The permalink pattern usually dictates it.
+        # (comments about slugify from original config for 'posts' collection kept for context)
+      blogs: # New configuration for the 'blogs' collection
+        enabled: true
+        # Layout for paginated pages (page 2, 3, ...).
+        # Page 1 uses the layout specified in blog/index.md and its content.
+        layouts:
+          - 'autopage_posts.html' # Use the layout created in Step 1
+        permalink: '/blog/page/:num/' # Permalink for pages 2, 3, etc.
+        title: 'Blog - Page :num'     # Title for pages 2, 3, etc. (e.g., "Blog - Page 2")
+        first_page_title: 'Blog Posts' # Title for the first page (/blog/), should match blog/index.md's title
+        output: true
+        # Ensure your blog posts are in a '_blogs' directory in your site's root.
+        # Each post (e.g., .md file) in '_blogs/' will be part of this collection.

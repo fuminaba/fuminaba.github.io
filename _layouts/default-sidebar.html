@@ -2,6 +2,13 @@
 layout: default
 ---
 
-<div class="main-content-with-sidebar">
-  {{ content }}
+<div class="page-content wrapper">
+  <div id="sidebar-left">
+    {% include left-profile.html %}
+  </div>
+
+  <div class="main-content-with-sidebar">
+    {{ content }}
+  </div>
+  {% include sidebar.html %}
 </div>
