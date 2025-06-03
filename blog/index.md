@@ -10,6 +10,16 @@ pagination:
 nav_order: 5
 ---
 
+<h1>Introduction</h1>
+<p style='text-align:justify;'>
+This page contains multiple articles which may be helpful as a resource for new students learning Python 
+for research. This wiki covers things from coding environments to useful tips and tricks for actual 
+analysis including (not limited to): processing of matrix/tabular data, basic file manipulation, statistics, 
+writing clean code, deep learning (eventually) etc.
+<br><br>
+<b>IMPORTANT:</b> All errata/suggestions are to be sent to <code>fumiy@student.ubc.ca</code>
+</p>
+
 {% if page.title %}
 <h1>{{ page.title }}</h1>
 {% endif %}
