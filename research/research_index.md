@@ -7,16 +7,18 @@ nav_order: 2
 
 # Research Interests
 
-I work at the intersection of [fields], with a focus on:
-- Early detection
-- Precision oncology
-- Prognosis
+<p style = 'text-align: justify;'>
+My research interests are primarily in deep learning-based computer vision applications in medical imaging. 
+More specifically, I'm interested in exploring novel and interpretable methods to extract meaningful insights 
+from complex medical images utilizing attention mechanisms, semi-supervised learning etc. 
+For instance, both tissue architecture/growth patterns and individual cell characteristics may be clinically relevant. 
+</p>
 
 ---
 
 ## Current Projects
-### Project Title 1
-Brief description.
+### Multiple Instance Learning of Large-scale DNA Organization to Characterize Prostate Cancer Aggressiveness
+
 
 ### Project Title 2
 Brief description.
