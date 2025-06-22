@@ -18,7 +18,9 @@ For instance, both tissue architecture/growth patterns and individual cell chara
 
 ## Current Projects
 ### Multiple Instance Learning of Large-scale DNA Organization to Characterize Prostate Cancer Aggressiveness
-<embed src='https://fuminaba.github.io/assets/[2025](Jun19) EACR-Poster-Fumi.pdf' />
+<a href = 'https://fuminaba.github.io/assets/[2025](Jun19) EACR-Poster-Fumi.pdf' target = '_blank'>
+<embed src='https://fuminaba.github.io/assets/[2025](Jun19) EACR-Poster-Fumi.pdf' width='80%'/>
+</a>
 
 ### Project Title 2
 Brief description.
