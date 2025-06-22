@@ -11,14 +11,14 @@ nav_order: 2
 My research interests are primarily in deep learning-based computer vision applications in medical imaging. 
 More specifically, I'm interested in exploring novel and interpretable methods to extract meaningful insights 
 from complex medical images utilizing attention mechanisms, semi-supervised learning etc. 
-For instance, both tissue architecture/growth patterns and individual cell characteristics may be clinically relevant. 
+For instance, both tissue architecture/growth patterns and individual cell characteristics may be clinically relevant in cancer. 
 </p>
 
 ---
 
 ## Current Projects
 ### Multiple Instance Learning of Large-scale DNA Organization to Characterize Prostate Cancer Aggressiveness
-
+<embed src='https://fuminaba.github.io/assets/[2025](Jun19) EACR-Poster-Fumi.pdf' />
 
 ### Project Title 2
 Brief description.
