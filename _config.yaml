@@ -16,7 +16,7 @@ plugins:
 nav_pages:
   - title: Home
     url: /
-  - title: Research
+  - title: Research/Projects
     url: /research/
   - title: Publications
     url: /publications/

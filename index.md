@@ -22,7 +22,7 @@ More recently, we have began investigating the utility of multimodal imaging dat
 A priority for my research is translating complex data into clinically meaningful insights, ultimately improving patient outcomes and healthcare efficiency in three ways: early cancer detection, reducing overtreatment and developing prognostic tools. 
 </p>
 
-[Learn about my research →](/research/research_index.md)
+[View my research and projects →](/research/research_index.md)
 
 Check out more:  
 
