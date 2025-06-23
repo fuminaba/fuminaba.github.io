@@ -14,7 +14,14 @@ Driven to apply these rapidly developing skills to meaningful problems, I transi
 </p> -->
 <!-- <h2>🧠 My Skillset</h2> -->
 
-## Overview of Skills
+## Overview of Experience
+<iframe
+    src="https://fuminaba-home.streamlit.app/"
+    width="100%"
+    height="600"
+    style="border: none;"
+    loading="lazy"
+></iframe>
 <div style="display: flex; justify-content: center; align-items: center; margin: 20px 0;zorder:1">
   <canvas id="skillsRadar" width="90%" height="100"></canvas>
 </div>
