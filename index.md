@@ -15,13 +15,7 @@ Driven to apply these rapidly developing skills to meaningful problems, I transi
 <!-- <h2>🧠 My Skillset</h2> -->
 
 ## Overview of Experience
-<iframe
-    src="https://fuminaba-home.streamlit.app/"
-    width="100%"
-    height="600"
-    style="border: none;"
-    loading="lazy"
-></iframe>
+
 <div style="display: flex; justify-content: center; align-items: center; margin: 20px 0;zorder:1">
   <canvas id="skillsRadar" width="90%" height="100"></canvas>
 </div>
@@ -67,6 +61,12 @@ const skillsRadar = new Chart(ctx, {
     }
 });
 </script>
+
+<p style = 'text-align: justify'>
+<b><a href = "https://fuminaba-home.streamlit.app">Streamlit Link</a></b>: For more detailed visuals on my skills, visit my streamlit app! (coming soon)!<br>
+<b>Description of experience</b>:
+</p>
+
 
 ## Current Research Focus
 Updated <u>June 05, 2025</u>
