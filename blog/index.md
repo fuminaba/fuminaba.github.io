@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Blog Posts
+title: Wiki Posts
 permalink: /wiki/
 # Important for jekyll-paginate-v2 autopages if you're using this method
 # and want this specific file to be the source for pagination
@@ -13,11 +13,13 @@ nav_order: 5
 <h1>Introduction</h1>
 <p style='text-align:justify;'>
 This page contains multiple articles which may be helpful as a resource for new students learning Python 
-for research. This wiki covers things from coding environments to useful tips and tricks for actual 
-analysis including (not limited to): processing of matrix/tabular data, basic file manipulation, statistics, 
+for research. The articles are originally intended to assist new students in my lab - thus specific tooling, 
+design considerations, tech stack etc. may be specific for our lab. Otherwise, this wiki covers things from 
+coding environments to useful tips and tricks for actual analysis including (not limited to): 
+processing of images/matrix/tabular data, basic file manipulation, statistics, 
 writing clean code, deep learning (eventually) etc.
 <br><br>
-<b>IMPORTANT:</b> All errata/suggestions are to be sent to <code>fumiy@student.ubc.ca</code>
+<b>IMPORTANT:</b> Please send all errata/suggestions to <code>fumiy@student.ubc.ca</code>
 </p>
 
 {% if page.title %}

@@ -6,7 +6,6 @@ nav_order: 2
 ---
 
 # Research Interests
-
 <p style = 'text-align: justify;'>
 My research interests are primarily in deep learning-based computer vision applications in medical imaging. 
 More specifically, I'm interested in exploring novel and interpretable methods to extract meaningful insights 
@@ -16,7 +15,7 @@ For instance, both tissue architecture/growth patterns and individual cell chara
 
 ---
 
-## Research and Projects
+## Select Research and Projects
 <h3><b>Multiple Instance Learning of Large-scale DNA Organization to Characterize Prostate Cancer Aggressiveness</b></h3>
 <p style = 'text-align: justify'>
 2025 June 20 - Presented at the Annual Congress of the European Association for Cancer Research (EACR) 2025 in Lisbon, Portugal. <br>

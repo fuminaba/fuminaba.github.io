@@ -64,7 +64,13 @@ $ conda activate myenv
 $ conda env create -f ./path/to/env.yaml
 ```
 
-### Step 3 - To save a virtual environment
+### Step 3 - Reuse a created environment
+To use or 'activate' a virtual environment:
+```{cmd}
+$ conda activate myenv
+```
+
+### Step 4 - To save a virtual environment
 To save a virtual environment into a file is quite simple:
 ```{cmd}
 $ conda env export > ./path/to/env.yaml
