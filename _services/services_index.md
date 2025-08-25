@@ -21,7 +21,7 @@ In a world where Large Language Model (LLM) -based tools can only get you so far
 <li><b>Integrating AI into your workflows</b> - consultation on the best way to integrate AI tools into your business or research for efficient pipelines</li>
 <li><b>Tutoring and guided learning</b> - learn statistics, data science and biomedical machine learning in a way that suits you</li>
 </ul>
-Learn more here >> <a href = 'https://fuminaba.github.io/services/consulting/'>Click here for details - Why might LLMs not be enough?</a>
+<a href = 'https://fuminaba.github.io/services/consulting.html'>Click here for details - Why might LLMs not be enough?</a>
 </p>
 <!-- [Click here for details - Why might LLMs not be enough?](/consulting) -->
 
