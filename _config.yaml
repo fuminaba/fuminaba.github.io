@@ -3,7 +3,7 @@ email: [fumiy@student.ubc.ca]
 description: >- 
   Personal website and research portfolio.
 baseurl: ""
-url: "https://yourusername.github.io"
+url: "https://fuminaba.github.io"
 github_username: fuminaba
 
 theme: minima
@@ -24,8 +24,13 @@ nav_pages:
     url: /news/
   - title: Wiki
     url: /wiki/
+  - title: Services
+    url: /services/
 
 collections:
+  services:
+    output: true
+    permalink: /services/:title.html
   wiki: # This defines your 'blogs' collection
     output: true # Set to true if you want individual blog post pages to be generated
     permalink: /wiki/:year/:month/:day/:title.html
