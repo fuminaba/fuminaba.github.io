@@ -1,8 +1,8 @@
 ---
-layout: default
-title: Services
-permalink: /services/
-nav_order: 6
+# layout: default
+# title: Services
+# permalink: /services/
+# nav_order: 6
 ---
 
 # My Services

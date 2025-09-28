@@ -24,8 +24,8 @@ nav_pages:
     url: /news/
   - title: Wiki
     url: /wiki/
-  - title: Services
-    url: /services/
+  # - title: Services
+  #   url: /services/
 
 collections:
   services:
