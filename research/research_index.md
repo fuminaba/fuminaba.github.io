@@ -16,6 +16,24 @@ For instance, both tissue architecture/growth patterns and individual cell chara
 ---
 
 ## Select Research and Projects
+<h3><b>Instance scoring via distillation of multiple instance classifiers for interpretable digital pathology</b></h3>
+<p style = 'text-align: justify'>
+2026 February 16 - Presented at SPIE Medical Imaging 2026 Digital and Computational Pathology Conference in Vancouver, British Columbia, Canada. <br>
+</p>
+Presentation + Proceedings Paper can be viewed at [SPIE Proceedings Digital Library](https://www.spiedigitallibrary.org/conference-proceedings-of-spie/13932/1393205/Instance-scoring-via-distillation-of-multiple-instance-classifiers-for-interpretable/10.1117/12.3087751.full?tab=ArticleLink)
+
+<p style = 'text-align: center'>
+<a href = 'https://www.spiedigitallibrary.org/conference-proceedings-of-spie/13932/1393205/Instance-scoring-via-distillation-of-multiple-instance-classifiers-for-interpretable/10.1117/12.3087751.full?tab=ArticleLink'>[View Paper + Presentation]</a> | <a href = 'https://github.com/NextPATH-Lab/MIL-Instance-Scoring'>[View code on GitHub]</a>
+</p>
+
+<p style = 'text-align: justify'><b>Description: </b>
+We explored the behavior of multiple instance learning (MIL) classifiers in this project, specifically how the attention network influences the classifier decision-making. We found that datasets which are 'noisy' on the bag-level (i.e. negative bags contain some level of positive instances described by a parameter tau) leveraged instance data differently from datasets which followed the MIL assumptions. We leverage this behavior and unsupervised clustering to identify instances which are associated with positive bag labels. 
+</p>
+<p style = 'text-align: justify'>
+<b>Skills & Frameworks:</b> Python, PyTorch, machine learning, weakly-supervised learning<br>
+</p>
+
+
 <h3><b>Multiple Instance Learning of Large-scale DNA Organization to Characterize Prostate Cancer Aggressiveness</b></h3>
 <p style = 'text-align: justify'>
 2025 June 20 - Presented at the Annual Congress of the European Association for Cancer Research (EACR) 2025 in Lisbon, Portugal. <br>
@@ -28,7 +46,8 @@ For instance, both tissue architecture/growth patterns and individual cell chara
 In this project we developed a score using large-scale DNA organization (LDO) features and a linear classifier to characterize prostate cancer aggressiveness. LDO features describe the chromatin organization patterns within cell nuclei stained with a DNA-stoichiometric stain, Feulgen-thionin. Interestingly, we found that features which describe cell nuclei are correlated with Gleason score, and to a lesser extent, treatment response.
 </p>
 <p style = 'text-align: justify'><b>Contributions: </b>
-In this project, I built an <u>ELT (extract, load, trasform) pipeline</u> for <u>multiple instance learning</u> data. Tabular LDO feature data is loaded as a list of tensors, each tensor being a collection of nuclei and their respective features. This data is used to train a linear classifier optimizing for both instance and bag loss in an n-fold cross validation.
+I completed this project analysis.
+In this project, I built an <u>ELT (extract, load, trasform) pipeline</u> for <u>multiple instance learning</u> data. Tabular LDO feature data is loaded as a list of tensors, each tensor being a collection of nuclei and their respective features. This data is used to train a linear classifier optimizing for both instance and bag loss in an n-fold cross validation. Results are plotted as shown in the poster.
 </p>
 <p style = 'text-align: justify'>
 <b>Skills & Frameworks:</b> Python, PyTorch, pandas, NumPy, scikit-learn, ELT pipelines<br>

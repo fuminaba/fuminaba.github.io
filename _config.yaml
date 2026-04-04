@@ -1,5 +1,5 @@
 title: Fumi Inaba
-email: [fumiy@student.ubc.ca]
+email: "fumiy@student.ubc.ca"
 description: >- 
   Personal website and research portfolio.
 baseurl: ""
@@ -11,7 +11,7 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
-  - jekyll-paginate-v2
+  # jekyll-paginate-v2 has been removed!
 
 nav_pages:
   - title: Home
@@ -24,57 +24,11 @@ nav_pages:
     url: /news/
   - title: Wiki
     url: /wiki/
-  # - title: Services
-  #   url: /services/
 
 collections:
   services:
     output: true
     permalink: /services/:title.html
-  wiki: # This defines your 'blogs' collection
-    output: true # Set to true if you want individual blog post pages to be generated
+  wiki: 
+    output: true 
     permalink: /wiki/:year/:month/:day/:title.html
-# Pagination V2 settings
-# In your _config.yml
-# ... (other settings) ...
-
-pagination:
-  enabled: true
-  per_page: 5
-  permalink: '/page/:num/' # Global pagination permalink (can be overridden)
-  title: ':title - page :num'
-  # limit: 0
-  sort_field: 'date'
-  sort_reverse: true
-
-  autopages:
-    enabled: true
-    collections:
-      posts:
-        enabled: true
-        # This tells autopages to use the 'news_paginated.html' layout
-        layouts:
-          - 'autopage_posts.html'
-        # This is the permalink for pages 2, 3, etc.
-        # The plugin will infer the base for page 1 from this.
-        permalink: '/news/page/:num/'
-        # Title for pages 2, 3, etc.
-        title: 'News - Page :num'
-        # Title for the first page (e.g., /news/)
-        first_page_title: 'News' # Important for the generated /news/index.html
-        # This ensures that the generated files are actually written to the _site directory
-        output: true 
-        # This section helps control the path for the first page if needed,
-        # (comments about slugify from original config for 'posts' collection kept for context)
-      blogs: # New configuration for the 'blogs' collection
-        enabled: true
-        # Layout for paginated pages (page 2, 3, ...).
-        # Page 1 uses the layout specified in blog/index.md and its content.
-        layouts:
-          - 'autopage_posts.html' # Use the layout created in Step 1
-        permalink: '/blog/page/:num/' # Permalink for pages 2, 3, etc.
-        title: 'Blog - Page :num'     # Title for pages 2, 3, etc. (e.g., "Blog - Page 2")
-        first_page_title: 'Blog Posts' # Title for the first page (/blog/), should match blog/index.md's title
-        output: true
-        # Ensure your blog posts are in a '_blogs' directory in your site's root.
-        # Each post (e.g., .md file) in '_blogs/' will be part of this collection.

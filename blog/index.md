@@ -12,41 +12,44 @@ nav_order: 5
 
 <h1>Introduction</h1>
 <p style='text-align:justify;'>
-This page contains multiple articles which may be helpful as a resource for new students learning Python 
-for research. The articles are originally intended to assist new students in my lab - thus specific tooling, 
-design considerations, tech stack etc. may be specific for our lab. Otherwise, this wiki covers things from 
-coding environments to useful tips and tricks for actual analysis including (not limited to): 
-processing of images/matrix/tabular data, basic file manipulation, statistics, 
-writing clean code, deep learning (eventually) etc.
+This page contains multiple articles which may be helpful as a resource for new students of NextPath Lab. 
+As the articles are intended for new students, specific tools, design considerations, tech stack etc. may be specific for our lab, although things are made generally applicable where possible.
+
 <br><br>
 <b>IMPORTANT:</b> Please send all errata/suggestions to <code>fumiy@student.ubc.ca</code>
 </p>
+{% assign sorted_wiki = site.wiki | sort: "date" | reverse %}
+{% assign wiki_by_year = sorted_wiki | group_by_exp: "item", "item.date | date: '%Y'" | sort: "name" | reverse %}
 
-{% if page.title %}
-<h1>{{ page.title }}</h1>
-{% endif %}
+{% for year in wiki_by_year %}
+  <h2 style="border-bottom: 1px solid #eee; padding-bottom: 10px; margin-top: 40px;">
+    {{ year.name }}
+  </h2>
 
-<div class="post-list">
-  {% for post in paginator.posts %}
-    <article class="post-item">
-      <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
-      <p class="post-meta">{{ post.date | date: "%B %d, %Y" }}</p>
-      {% if post.excerpt %}
-        <div class="post-excerpt">
-          {{ post.excerpt }}
+  <div class="publications-list">
+    {% for item in year.items %}
+      <div class="pub-item" style="display: flex; gap: 20px; margin-bottom: 1.5rem;">
+        
+        <div style="flex: 0 0 100px; color: #666; font-style: italic; margin-top: 2px;">
+          {{ item.date | date: "%b %d" }}
         </div>
-      {% endif %}
-    </article>
-  {% else %}
-    <p>No blog posts found.</p>
-  {% endfor %}
-</div>
 
-<!-- Pagination navigation -->
-{% if paginator.total_pages > 1 %}
-<div class="pagination">
-  {% if paginator.previous_page %}<a href="{{ paginator.previous_page_path | relative_url }}" class="previous">Previous</a>{% else %}<span class="previous">Previous</span>{% endif %}
-  <span class="page_number">Page {{ paginator.page }} of {{ paginator.total_pages }}</span>
-  {% if paginator.next_page %}<a href="{{ paginator.next_page_path | relative_url }}" class="next">Next</a>{% else %}<span class="next">Next</span>{% endif %}
-</div>
-{% endif %}
+        {% if item.image %}
+        <div style="flex: 0 0 150px;">
+          <img src="{{ item.image | relative_url }}" alt="Thumbnail" style="width: 100%; border-radius: 4px; border: 1px solid #eee; object-fit: cover;">
+        </div>
+        {% endif %}
+
+        <div style="flex: 1;">
+          <h3 style="margin-top: 0; margin-bottom: 5px; font-size: 1.1rem;">
+            <a href="{{ item.url | relative_url }}" style="text-decoration: none;">{{ item.title }}</a>
+          </h3>
+          
+          <div class="post-excerpt" style="color: #444; font-size: 0.95rem;">
+            {{ item.excerpt | strip_html | truncatewords: 25 }}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endfor %}
