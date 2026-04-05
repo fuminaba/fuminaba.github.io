@@ -33,6 +33,7 @@ We explored the behavior of multiple instance learning (MIL) classifiers in this
 <b>Skills & Frameworks:</b> Python, PyTorch, machine learning, weakly-supervised learning<br>
 </p>
 
+---
 
 <h3><b>Multiple Instance Learning of Large-scale DNA Organization to Characterize Prostate Cancer Aggressiveness</b></h3>
 <p style = 'text-align: justify'>

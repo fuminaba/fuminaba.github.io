@@ -35,7 +35,7 @@ const skillsRadar = new Chart(ctx, {
         datasets: [
             {
                 label: 'Experience (years)',
-                data: [3, 2.5, 6, 3, 2.5, 3.5, 6, 1, 4],
+                data: [4, 3.5, 7, 4, 3.5, 4.5, 7, 2, 5],
                 backgroundColor: 'rgba(0, 123, 255, 0.2)',
                 borderColor: 'rgba(0, 123, 255, 1)',
                 borderWidth: 2,
@@ -62,18 +62,17 @@ const skillsRadar = new Chart(ctx, {
 });
 </script>
 
-<p style = 'text-align: justify'>
+<!-- <p style = 'text-align: justify'>
 <b><a href = "https://fuminaba-home.streamlit.app">Streamlit Link</a></b>: For more detailed visuals on my skills, visit my streamlit app! (coming soon)!<br>
 <b>Description of experience</b>:
-</p>
+</p> -->
 
 
-## Current Research Focus
-Updated <u>June 05, 2025</u>
+## Research Scope
+Updated <u>April 05, 2026</u>
 <p style = "text-align: justify;">
-I am currently a <b>PhD student</b> in the Interdisciplinary Oncology Program (<a href = "https://www.iop.ca/">IOP</a>) at the BC Cancer Research Institute (BCCRI), working with Drs. Martial Guillaud and Calum MacAulay. 
+I am currently a <b>PhD candidate</b> in the Interdisciplinary Oncology Program (<a href = "https://www.iop.ca/">IOP</a>) at the BC Cancer Research Institute (BCCRI), working with Drs. Martial Guillaud and Calum MacAulay. 
 We work with medical images, primarily of histology and cytology slides. Through image processing, charactersitics of individual cells are measured and analyzed to extract clinically relevant insights of the patient. 
-More recently, we have began investigating the utility of multimodal imaging data, incorporating radiology images into our workflows.
 A priority for my research is translating complex data into clinically meaningful insights, ultimately improving patient outcomes and healthcare efficiency in three ways: early cancer detection, reducing overtreatment and developing prognostic tools. 
 </p>
 
