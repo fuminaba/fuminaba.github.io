@@ -1,0 +1,162 @@
+---
+// src/layouts/PostLayout.astro
+import Layout from './Layout.astro';
+
+interface Props {
+    title: string;
+    date: Date;
+    series?: string;
+    description?: string;
+}
+
+const { title, date, series, description } = Astro.props;
+
+const formatDate = (date: Date) => {
+    return date.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+    });
+};
+---
+
+<Layout title={title} description={description}>
+    <article style="max-width: 750px; margin: 0 auto;">
+        <!-- Header info -->
+        <header-meta style="display: block; margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);">
+            <div style="display: flex; gap: 0.75rem; align-items: center; margin-bottom: 0.75rem; flex-wrap: wrap;">
+                <time style="font-size: 0.9rem; color: var(--text-muted); font-weight: 500;">
+                    {formatDate(date)}
+                </time>
+                {series && (
+                    <>
+                        <span style="color: var(--border);">&bull;</span>
+                        <span class="badge badge-processed" style="font-size: 0.7rem; padding: 0.15rem 0.5rem; color: #818cf8; border-color: rgba(99, 102, 241, 0.3);">
+                            Series: {series}
+                        </span>
+                    </>
+                )}
+            </div>
+            <h1 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 0; line-height: 1.2; letter-spacing: -0.03em;">
+                {title}
+            </h1>
+        </header-meta>
+
+        <!-- Markdown body styling wrapper -->
+        <div class="markdown-content">
+            <slot />
+        </div>
+
+        <!-- Back links -->
+        <div style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between;">
+            {series ? (
+                <a href="/wiki" style="font-weight: 600; display: inline-flex; align-items: center; gap: 0.25rem;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                    Back to Wiki
+                </a>
+            ) : (
+                <a href="/blog" style="font-weight: 600; display: inline-flex; align-items: center; gap: 0.25rem;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                    Back to Blog
+                </a>
+            )}
+            <a href="/" style="font-weight: 600; color: var(--text-muted);">
+                Go Home
+            </a>
+        </div>
+    </article>
+</Layout>
+
+<style is:global>
+    /* Styling for markdown content */
+    .markdown-content h1 {
+        font-size: 1.8rem;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 0.4rem;
+    }
+    
+    .markdown-content h2 {
+        font-size: 1.4rem;
+        margin-top: 1.75rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .markdown-content h3 {
+        font-size: 1.15rem;
+        margin-top: 1.5rem;
+        margin-bottom: 0.6rem;
+    }
+    
+    .markdown-content p {
+        font-size: 1rem;
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+        color: var(--text);
+        text-align: justify;
+    }
+    
+    .markdown-content ul, 
+    .markdown-content ol {
+        margin-bottom: 1.5rem;
+        padding-left: 1.75rem;
+    }
+    
+    .markdown-content li {
+        margin-bottom: 0.5rem;
+        color: var(--text);
+    }
+    
+    .markdown-content blockquote {
+        border-left: 4px solid var(--primary);
+        padding: 0.5rem 0 0.5rem 1.25rem;
+        margin-bottom: 1.5rem;
+        background-color: rgba(99, 102, 241, 0.03);
+        border-radius: 0 var(--radius) var(--radius) 0;
+    }
+    
+    .markdown-content blockquote p {
+        color: var(--text-muted);
+        font-style: italic;
+        margin-bottom: 0;
+    }
+    
+    .markdown-content pre {
+        background-color: #1e2128 !important;
+        border: 1px solid var(--border);
+        padding: 1.25rem;
+        border-radius: 8px;
+        margin-bottom: 1.5rem;
+        overflow-x: auto;
+    }
+    
+    .markdown-content code {
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 0.9em;
+        background-color: rgba(255, 255, 255, 0.05);
+        padding: 0.2rem 0.4rem;
+        border-radius: 4px;
+        color: #f472b6; /* pinkish code highlight */
+    }
+    
+    .markdown-content pre code {
+        background-color: transparent;
+        padding: 0;
+        border-radius: 0;
+        color: inherit;
+    }
+    
+    .markdown-content embed {
+        border-radius: var(--radius);
+        border: 1px solid var(--border);
+        margin-bottom: 1.5rem;
+        background-color: var(--surface);
+    }
+    
+    .markdown-content hr {
+        border: 0;
+        border-top: 1px solid var(--border);
+        margin: 2rem 0;
+    }
+</style>

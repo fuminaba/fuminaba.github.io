@@ -1,0 +1,136 @@
+---
+// src/pages/research.astro
+import Layout from '../layouts/Layout.astro';
+
+const projects = [
+    {
+        title: "Instance scoring via distillation of multiple instance classifiers for interpretable digital pathology",
+        venue: "SPIE Medical Imaging 2026 Digital and Computational Pathology Conference",
+        location: "Vancouver, BC, Canada",
+        date: "February 16, 2026",
+        paperUrl: "https://www.spiedigitallibrary.org/conference-proceedings-of-spie/13932/1393205/Instance-scoring-via-distillation-of-multiple-instance-classifiers-for-interpretable/10.1117/12.3087751.full?tab=ArticleLink",
+        codeUrl: "https://github.com/NextPATH-Lab/MIL-Instance-Scoring",
+        posterUrl: null,
+        description: "We explored the behavior of multiple instance learning (MIL) classifiers in this project, specifically how the attention network influences the classifier decision-making. We found that datasets which are 'noisy' on the bag-level (i.e. negative bags contain some level of positive instances described by a parameter tau) leveraged instance data differently from datasets which followed the MIL assumptions. We leverage this behavior and unsupervised clustering to identify instances which are associated with positive bag labels.",
+        contributions: "Investigated MIL classifier attention weight dynamics in noisy bags, implemented the unsupervised clustering framework, and authored the paper/presentation.",
+        skills: ["Python", "PyTorch", "Machine Learning", "Weakly-supervised Learning", "Interpretability"]
+    },
+    {
+        title: "Multiple Instance Learning of Large-scale DNA Organization to Characterize Prostate Cancer Aggressiveness",
+        venue: "Annual Congress of the European Association for Cancer Research (EACR) 2025",
+        location: "Lisbon, Portugal",
+        date: "June 20, 2025",
+        paperUrl: null,
+        codeUrl: null, // "in progress" in original
+        posterUrl: "/assets/[2025](Jun19) EACR-Poster-Fumi.pdf",
+        description: "In this project we developed a score using large-scale DNA organization (LDO) features and a linear classifier to characterize prostate cancer aggressiveness. LDO features describe the chromatin organization patterns within cell nuclei stained with a DNA-stoichiometric stain, Feulgen-thionin. Interestingly, we found that features which describe cell nuclei are correlated with Gleason score, and to a lesser extent, treatment response.",
+        contributions: "Built an ELT (extract, load, transform) pipeline for multiple instance learning data. Tabular LDO feature data was loaded as a collection of nuclear feature tensors. Trained a linear classifier optimizing for both instance and bag loss in an n-fold cross validation.",
+        skills: ["Python", "PyTorch", "Pandas", "NumPy", "Scikit-learn", "ELT Pipelines", "Prostate Cancer"]
+    },
+    {
+        title: "Attention-Enhanced Sequential U-Net for Nuclear Segmentation",
+        venue: "Bioinformatics, Interdisciplinary Oncology, Genome Science and Technology (B.I.G) Research Day 2025",
+        location: "Vancouver, BC, Canada",
+        date: "March 20, 2025",
+        paperUrl: null,
+        codeUrl: null, // "coming soon" in original
+        posterUrl: "/assets/[2025](Mar20) BIG25-Poster-Fumi.pdf",
+        description: "This project studies efficiency against performance of deep learning segmentation models, and the attention mechanisms role in reducing the number of parameters. We studied the performance of standard U-Net models and attention U-Net models on a test set of nuclear images. Additionally, we tested their capabilities for two tasks - nuclear center detection and nuclear contour segmentation. We found that while the respective tasks could be learned with the standard U-Net with fewer parameters, the attention U-Net was able to bring the number of parameters down considerably more - near 1% of the original parameters - and generalized better across different nuclear stain types.",
+        contributions: "Built a segmentation model training pipeline on a dataset of approximately 20,000 images and tested on 1,000 test images. Evaluated DICE scores distribution across different parameter counts by altering feature channels to isolate the effect of attention networks.",
+        skills: ["Python", "PyTorch", "Matplotlib", "SciPy", "Computer Vision", "Segmentation"]
+    }
+];
+---
+
+<Layout title="Research Projects" description="Computational pathology research, ML models, and digital oncology projects by Fumiya Inaba.">
+    <div style="margin-bottom: 2rem;">
+        <h1 style="margin-bottom: 0.5rem;">Select Research & Projects</h1>
+        <p style="color: var(--text-muted); margin-bottom: 3rem; max-width: 800px;">
+            My research focuses on deep learning-based computer vision applications in digital pathology. 
+            I am particularly interested in developing interpretable methods to extract clinically relevant insights 
+            from tissue slides, such as spatial cellular architectures and chromatin organization.
+        </p>
+
+        <!-- Project Cards Grid -->
+        <div style="display: flex; flex-direction: column; gap: 3rem;">
+            {projects.map((proj) => (
+                <div class="card" style="position: relative; overflow: hidden; display: flex; flex-direction: column; gap: 1.5rem;">
+                    <!-- Top Ribbon/Indicator -->
+                    <div style="position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--gradient);"></div>
+                    
+                    <div>
+                        <!-- Date and Location badge -->
+                        <div style="display: flex; gap: 0.75rem; align-items: center; margin-bottom: 0.5rem; flex-wrap: wrap;">
+                            <span class="badge badge-processed" style="font-size: 0.7rem; padding: 0.2rem 0.5rem;">
+                                {proj.date}
+                            </span>
+                            <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 500;">
+                                {proj.venue} &bull; {proj.location}
+                            </span>
+                        </div>
+                        
+                        <h2 style="margin-top: 0.25rem; font-size: 1.5rem; margin-bottom: 1rem; line-height: 1.35;">
+                            {proj.title}
+                        </h2>
+                    </div>
+
+                    <!-- Description -->
+                    <div>
+                        <h3 style="margin-top: 0; font-size: 1rem; color: var(--text); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em;">
+                            Project Overview
+                        </h3>
+                        <p style="font-size: 0.95rem; margin-bottom: 0; line-height: 1.6;">
+                            {proj.description}
+                        </p>
+                    </div>
+
+                    <!-- Contributions (If present) -->
+                    {proj.contributions && (
+                        <div style="background-color: rgba(0, 0, 0, 0.15); padding: 1.25rem; border-radius: 8px; border-left: 2px solid var(--border);">
+                            <h4 style="margin-top: 0; font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem;">
+                                My Contributions
+                            </h4>
+                            <p style="font-size: 0.9rem; margin-bottom: 0; line-height: 1.5; color: var(--text-muted);">
+                                {proj.contributions}
+                            </p>
+                        </div>
+                    )}
+
+                    <!-- Skills Tags & Buttons -->
+                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; margin-top: 0.5rem; padding-top: 1rem; border-top: 1px solid var(--border);">
+                        <!-- Skills Tags -->
+                        <div style="display: flex; gap: 0.4rem; flex-wrap: wrap; max-width: 65%;">
+                            {proj.skills.map((skill) => (
+                                <span class="tag" style="font-size: 0.75rem;">
+                                    {skill}
+                                </span>
+                            ))}
+                        </div>
+                        
+                        <!-- Action Buttons -->
+                        <div style="display: flex; gap: 0.75rem;">
+                            {proj.paperUrl && (
+                                <a href={proj.paperUrl} target="_blank" rel="noopener noreferrer" class="btn btn-sm">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                    View Paper
+                                </a>
+                            )}
+                            {proj.posterUrl && (
+                                <a href={proj.posterUrl} target="_blank" rel="noopener noreferrer" class="btn btn-sm">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                                    View Poster (PDF)
+                                </a>
+                            )}
+                            {proj.codeUrl && (
+                                <a href={proj.codeUrl} target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg>
+                                    Codebase
+                                </a>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+</Layout>

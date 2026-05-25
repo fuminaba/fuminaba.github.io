@@ -1,0 +1,59 @@
+---
+// src/pages/blog.astro
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+
+const posts = await getCollection('blog');
+const sortedPosts = posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const formatDate = (date: Date) => {
+    return date.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+    });
+};
+---
+
+<Layout title="Blog" description="Personal blog of Fumiya Inaba. Thoughts on digital oncology, deep learning, and digital pathology.">
+    <div style="margin-bottom: 2rem;">
+        <h1 style="margin-bottom: 0.5rem;">Blog</h1>
+        <p style="color: var(--text-muted); margin-bottom: 3rem;">
+            My writings, news updates, and thoughts on AI, oncology, and digital pathology.
+        </p>
+
+        <div style="display: flex; flex-direction: column; gap: 2rem;">
+            {sortedPosts.length === 0 ? (
+                <div class="card" style="text-align: center; color: var(--text-muted); padding: 3rem;">
+                    No blog posts found yet. Check back soon!
+                </div>
+            ) : (
+                sortedPosts.map((post) => (
+                    <article class="card" style="display: flex; flex-direction: column; gap: 1rem;">
+                        <div>
+                            <div style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600; margin-bottom: 0.25rem;">
+                                {formatDate(post.data.date)}
+                            </div>
+                            <h2 style="margin-top: 0; margin-bottom: 0.5rem; font-size: 1.5rem;">
+                                <a href={`/blog/${post.id}`} style="color: var(--text); text-decoration: none;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text)'">
+                                    {post.data.title}
+                                </a>
+                            </h2>
+                        </div>
+                        
+                        <div style="color: var(--text-muted); font-size: 0.95rem;">
+                            {post.body.slice(0, 220).replace(/\*\*|\*/g, '')}...
+                        </div>
+                        
+                        <div style="margin-top: 0.5rem;">
+                            <a href={`/blog/${post.id}`} style="font-weight: 600; display: inline-flex; align-items: center; gap: 0.25rem; font-size: 0.9rem;">
+                                Read article
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                            </a>
+                        </div>
+                    </article>
+                ))
+            )}
+        </div>
+    </div>
+</Layout>

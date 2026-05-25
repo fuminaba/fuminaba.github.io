@@ -1,0 +1,25 @@
+---
+// src/pages/wiki/[...slug].astro
+import { getCollection, render } from 'astro:content';
+import PostLayout from '../../layouts/PostLayout.astro';
+
+export async function getStaticPaths() {
+    const wikiItems = await getCollection('wiki');
+    return wikiItems.map(item => ({
+        params: { slug: item.id },
+        props: { item },
+    }));
+}
+
+const { item } = Astro.props;
+const { Content } = await render(item);
+---
+
+<PostLayout 
+    title={item.data.title} 
+    date={item.data.date}
+    series={item.data.series}
+    description={item.body.slice(0, 160).replace(/\*\*|\*/g, '')}
+>
+    <Content />
+</PostLayout>

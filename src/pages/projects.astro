@@ -1,0 +1,124 @@
+---
+// src/pages/projects.astro
+import Layout from '../layouts/Layout.astro';
+
+const projects = [
+    {
+        id: "lira",
+        title: "LiRA (Literature Review Assistant)",
+        subtitle: "AI-Powered Academic Search & Automation Platform",
+        status: "MVP Beta",
+        description: "An intelligent literature review assistant built for biomedical and scientific researchers. LiRA helps users discover, summarize, and monitor academic publications dynamically from PubMed, arXiv, and OpenAlex. It features an automated email alert system delivering periodic personalized updates based on the user's research interest profile.",
+        features: [
+            "Natural language multi-database search (PubMed, arXiv, OpenAlex) with date parsing",
+            "Automated review schedules sending curated summaries of new papers directly to email",
+            "Text extraction, key insights generation, and keyword tagging powered by Gemini",
+            "Seamless local synchronization with Zotero collections and drag-and-drop PDF parsing",
+            "User credit billing system integrated with Stripe checkout"
+        ],
+        techStack: ["Django", "Python", "Gemini Pro API", "Stripe API", "Vanilla CSS", "HTML5", "PostgreSQL"],
+        link: "https://lira.fuminaba.com",
+        github: null, // Private repo
+    }
+];
+---
+
+<Layout title="Projects" description="Entrepreneurial ventures, software platforms, and AI tools developed by Fumiya Inaba.">
+    <div style="margin-bottom: 2rem;">
+        <h1 style="margin-bottom: 0.5rem;">Projects & Ventures</h1>
+        <p style="color: var(--text-muted); margin-bottom: 3rem; max-width: 800px;">
+            A showcase of my software engineering projects, entrepreneurial ventures, and practical AI tools.
+        </p>
+
+        <!-- Project Grid -->
+        <div style="display: flex; flex-direction: column; gap: 3.5rem;">
+            {projects.map((proj) => (
+                <div class="card" style="position: relative; overflow: hidden; display: flex; flex-direction: column; gap: 1.5rem; padding: 2.5rem;">
+                    <!-- Border Highlight -->
+                    <div style="position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--gradient);"></div>
+                    
+                    <!-- Header Info -->
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem;">
+                        <div>
+                            <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 0.5rem;">
+                                <span class="badge" style="background-color: var(--success-bg); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); font-size: 0.7rem; padding: 0.2rem 0.5rem;">
+                                    {proj.status}
+                                </span>
+                            </div>
+                            <h2 style="margin-top: 0.25rem; font-size: 1.8rem; margin-bottom: 0.25rem; line-height: 1.2;">
+                                {proj.title}
+                            </h2>
+                            <p style="color: #818cf8; font-weight: 600; font-size: 1.05rem; margin-bottom: 0;">
+                                {proj.subtitle}
+                            </p>
+                        </div>
+                        
+                        <!-- Top Links -->
+                        <div style="display: flex; gap: 0.75rem;">
+                            {proj.link && (
+                                <a href={proj.link} target="_blank" rel="noopener noreferrer" class="btn btn-sm">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                    Visit App
+                                </a>
+                            )}
+                            {proj.github && (
+                                <a href={proj.github} target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg>
+                                    GitHub
+                                </a>
+                            )}
+                        </div>
+                    </div>
+
+                    <!-- Description -->
+                    <div style="margin-top: 0.5rem;">
+                        <p style="font-size: 1rem; color: var(--text); line-height: 1.6; margin-bottom: 0; text-align: justify;">
+                            {proj.description}
+                        </p>
+                    </div>
+
+                    <!-- Features -->
+                    <div>
+                        <h3 style="margin-top: 0; font-size: 1rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.75rem;">
+                            Key Capabilities & Features
+                        </h3>
+                        <ul style="padding-left: 1.25rem; display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 0;">
+                            {proj.features.map((feat) => (
+                                <li style="font-size: 0.95rem; color: var(--text); line-height: 1.5;">
+                                    {feat}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    <!-- Tech Stack Tags -->
+                    <div style="margin-top: 0.5rem; padding-top: 1.25rem; border-top: 1px solid var(--border);">
+                        <h4 style="font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.75rem;">
+                            Technology Stack
+                        </h4>
+                        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                            {proj.techStack.map((tech) => (
+                                <span class="tag" style="font-size: 0.8rem; background-color: rgba(99, 102, 241, 0.06); border-color: rgba(99, 102, 241, 0.15);">
+                                    {tech}
+                                </span>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            ))}
+            
+            <!-- Future placeholder card -->
+            <div class="card" style="border-style: dashed; border-color: var(--border); background-color: transparent; text-align: center; padding: 4rem 2rem; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 1rem; box-shadow: none;">
+                <div style="width: 50px; height: 50px; border-radius: 50%; border: 2px dashed var(--border); display: flex; align-items: center; justify-content: center; color: var(--text-muted);">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </div>
+                <div>
+                    <h3 style="margin-top: 0; margin-bottom: 0.25rem; font-size: 1.2rem; color: var(--text-muted);">Next Venture Coming Soon</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); max-width: 400px; margin: 0 auto;">
+                        Developing and experimenting with new AI tools and web platforms. Stay tuned!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</Layout>

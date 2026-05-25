@@ -1,7 +1,24 @@
-# For local testing only
-_site
+# build output
+dist/
+# generated types
+.astro/
 
-# Draft files
-*.docx
+# dependencies
+node_modules/
 
-.DS_Store
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+
+# environment variables
+.env
+.env.production
+
+# jetbrains setting folder
+.idea/
+
+# temporary backup directory
+jekyll-backup/

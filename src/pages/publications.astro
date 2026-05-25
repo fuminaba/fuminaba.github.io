@@ -1,0 +1,245 @@
+---
+// src/pages/publications.astro
+import Layout from '../layouts/Layout.astro';
+
+const publications = [
+    {
+        id: "pub-spie-2026",
+        title: "Instance scoring via distillation of multiple instance classifiers for interpretable digital pathology",
+        authors: "Fumiya Inaba, Mira Keyes, Calum MacAulay, Martial Guillaud",
+        venue: "SPIE Proceedings Digital Library",
+        year: 2026,
+        pdf: "https://www.spiedigitallibrary.org/conference-proceedings-of-spie/13932/1393205/Instance-scoring-via-distillation-of-multiple-instance-classifiers-for-interpretable/10.1117/12.3087751.short?tab=ArticleLink",
+        code: "https://github.com/NextPATH-Lab/MIL-Instance-Scoring",
+        keywords: ["multiple-instance-learning", "digital-pathology", "interpretable-ai", "knowledge-distillation"],
+        summary: "This work introduces a method to calculate cell-level instance scores by distilling knowledge from a slide-level Multiple Instance Learning (MIL) classifier down to a simple cell-level model. This improves diagnostic interpretability by pinpointing exactly which cells are driving the cancer diagnosis on a cytology/histology slide without needing manual cell-level annotations."
+    },
+    {
+        id: "pub-breast-2026",
+        title: "Large-scale DNA organization analysis of primary breast cancers for prediction of axillary lymph node metastases",
+        authors: "Nikolay Alabi, Alan Nichol, Fumiya Inaba, Anita Carraro, Soufiane El-Hallani, Martial Guillaud",
+        venue: "The Breast",
+        year: 2026,
+        pdf: "https://www.thebreastonline.com/article/S0960-9776(26)00022-6/fulltext",
+        code: "https://github.com/NikolayAlabi/LDO",
+        keywords: ["breast-cancer", "dna-organization", "metastasis-prediction", "quantitative-cytometry"],
+        summary: "We analyzed large-scale nuclear DNA distribution patterns (chromatin organization) in primary breast cancer slides. By quantifying these nuclear features across thousands of cells, we developed an algorithm that predicts axillary lymph node metastasis, helping reduce overtreatment and refine patient staging."
+    },
+    {
+        id: "pub-eacr-2025",
+        title: "EACR Poster: Explainable AI in Histology & Breast Cancer Staging",
+        authors: "Fumiya Inaba, Martial Guillaud, Calum MacAulay",
+        venue: "European Association for Cancer Research (EACR)",
+        year: 2025,
+        pdf: "/assets/[2025](Jun19) EACR-Poster-Fumi.pdf",
+        code: null,
+        keywords: ["explainable-ai", "histology", "poster", "breast-cancer"],
+        summary: "Presented our preliminary models on explainable Multiple Instance Learning (MIL) applied to digital histology slides, demonstrating how localized cell morphological clusters correlate with patient survival outcomes."
+    },
+    {
+        id: "pub-big-2025",
+        title: "BIG25 Poster: Cytology Slide Classification using Graph Neural Networks",
+        authors: "Fumiya Inaba, Calum MacAulay, Martial Guillaud",
+        venue: "Bioinformatics & Genomics Conference (BIG)",
+        year: 2025,
+        pdf: "/assets/[2025](Mar20) BIG25-Poster-Fumi.pdf",
+        code: null,
+        keywords: ["cytology", "graph-neural-networks", "poster", "point-clouds"],
+        summary: "Showcased our Graph Neural Network (GNN) and point-cloud model for classifying whole cytology slides. The model processes cell spatial coordinates as a graph, capturing slide-level structural features that traditional CNNs miss."
+    }
+];
+---
+
+<Layout title="Publications" description="Research publications, conference proceedings, and poster presentations by Fumiya Inaba.">
+    <div style="margin-bottom: 2rem;">
+        <h1 style="margin-bottom: 0.5rem;">Publications & Research</h1>
+        <p style="color: var(--text-muted); margin-bottom: 2rem;">
+            A compilation of my peer-reviewed journal papers, conference proceedings, and academic posters.
+        </p>
+
+        <!-- Search Bar (Styled like LiRA's dashboard search) -->
+        <div class="search-container" style="margin-bottom: 2rem; max-width: 600px;">
+            <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input 
+                type="text" 
+                id="pubSearchInput" 
+                placeholder="Search publications by title, venue, author, or tag..." 
+                class="search-input"
+            />
+        </div>
+
+        <!-- Table Container -->
+        <div style="width: 100%; overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--border); background-color: var(--surface); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);">
+            <table style="width: 100%; border-collapse: collapse; text-align: left; min-width: 600px;">
+                <thead>
+                    <tr style="background-color: rgba(0, 0, 0, 0.2); border-bottom: 1px solid var(--border);">
+                        <th style="padding: 1.25rem 1rem; font-weight: 700; color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; width: 55%;">Title & Tags</th>
+                        <th style="padding: 1.25rem 1rem; font-weight: 700; color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; width: 25%;">Authors & Venue</th>
+                        <th style="padding: 1.25rem 1rem; font-weight: 700; color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; width: 20%; text-align: right;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="pubTableBody">
+                    {publications.map((pub) => (
+                        <>
+                            <!-- Main Row -->
+                            <tr class="pub-row" data-search={JSON.stringify(pub).toLowerCase()} style="border-bottom: 1px solid var(--border); transition: var(--transition);">
+                                <td style="padding: 1.25rem 1rem; vertical-align: top;">
+                                    <div style="margin-bottom: 0.75rem;">
+                                        <span class="pub-title" style="font-weight: 700; font-size: 1.05rem; color: var(--text); line-height: 1.4;">
+                                            {pub.title}
+                                        </span>
+                                    </div>
+                                    <div style="display: flex; gap: 0.4rem; flex-wrap: wrap;">
+                                        {pub.keywords.map((kw) => (
+                                            <span class="tag tag-keyword" style="padding: 0.15rem 0.5rem; font-size: 0.75rem; cursor: pointer;" onclick={`filterByTag('${kw}')`}>
+                                                #{kw}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </td>
+                                <td style="padding: 1.25rem 1rem; vertical-align: top; color: var(--text-muted); font-size: 0.9rem;">
+                                    <div style="margin-bottom: 0.25rem; font-weight: 500;">
+                                        {pub.authors.split(', ').map((author, index, arr) => {
+                                            const isFumi = author.includes("Fumiya Inaba");
+                                            return (
+                                                <span style={isFumi ? "color: var(--text); font-weight: bold;" : ""}>
+                                                    {author}{index < arr.length - 1 ? ", " : ""}
+                                                </span>
+                                            );
+                                        })}
+                                    </div>
+                                    <div style="font-size: 0.8rem; font-style: italic; color: #818cf8;">
+                                        {pub.venue} &bull; {pub.year}
+                                    </div>
+                                </td>
+                                <td style="padding: 1.25rem 1rem; vertical-align: top; text-align: right; white-space: nowrap;">
+                                    <div style="display: flex; gap: 0.5rem; justify-content: flex-end; align-items: center;">
+                                        {pub.pdf && (
+                                            <a href={pub.pdf} target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm" style="height: 32px; padding: 0 0.75rem;">
+                                                PDF
+                                            </a>
+                                        )}
+                                        {pub.code && (
+                                            <a href={pub.code} target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm" style="height: 32px; padding: 0 0.75rem;">
+                                                Code
+                                            </a>
+                                        )}
+                                        <button 
+                                            onclick={`toggleSummary('${pub.id}')`} 
+                                            id={`btn-summary-${pub.id}`}
+                                            class="btn btn-outline btn-sm" 
+                                            style="height: 32px; padding: 0 0.75rem; border-color: var(--primary); color: #818cf8;"
+                                        >
+                                            Summary ⌄
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            
+                            <!-- Collapsible Summary Row -->
+                            <tr id={`summary-row-${pub.id}`} class="summary-row" style="display: none; background-color: rgba(99, 102, 241, 0.03); border-bottom: 1px solid var(--border);">
+                                <td colspan="3" style="padding: 1.5rem 2rem;">
+                                    <h4 style="margin-top: 0; margin-bottom: 0.5rem; font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;">
+                                        Key Contribution Summary
+                                    </h4>
+                                    <p style="margin: 0; line-height: 1.6; font-size: 0.95rem; color: var(--text);">
+                                        {pub.summary}
+                                    </p>
+                                </td>
+                            </tr>
+                        </>
+                    ))}
+                </tbody>
+            </table>
+            
+            <div id="noResults" style="display: none; text-align: center; padding: 3rem; color: var(--text-muted);">
+                No publications found matching your search.
+            </div>
+        </div>
+    </div>
+
+    <!-- Client-side Interactive Filter Script -->
+    <script is:inline>
+        // Toggle abstract summaries
+        function toggleSummary(id) {
+            const summaryRow = document.getElementById(`summary-row-${id}`);
+            const button = document.getElementById(`btn-summary-${id}`);
+            if (summaryRow.style.display === 'none') {
+                summaryRow.style.display = 'table-row';
+                button.innerText = 'Summary ⌃';
+                button.style.backgroundColor = 'rgba(99, 102, 241, 0.1)';
+            } else {
+                summaryRow.style.display = 'none';
+                button.innerText = 'Summary ⌄';
+                button.style.backgroundColor = 'transparent';
+            }
+        }
+
+        // Filter publications
+        const searchInput = document.getElementById('pubSearchInput');
+        const rows = document.querySelectorAll('.pub-row');
+        const noResults = document.getElementById('noResults');
+
+        function filterPublications(query) {
+            const cleanQuery = query.toLowerCase().trim();
+            let matches = 0;
+            
+            rows.forEach(row => {
+                const searchData = row.getAttribute('data-search');
+                const isMatch = searchData.includes(cleanQuery);
+                const summaryRowId = 'summary-row-' + row.id.replace('row-', '');
+                const summaryRow = document.getElementById(row.nextElementSibling.id);
+                
+                if (isMatch) {
+                    row.style.display = 'table-row';
+                    matches++;
+                } else {
+                    row.style.display = 'none';
+                    if (summaryRow && summaryRow.classList.contains('summary-row')) {
+                        summaryRow.style.display = 'none';
+                        const summaryBtn = document.getElementById('btn-summary-' + row.nextElementSibling.id.replace('summary-row-', ''));
+                        if (summaryBtn) {
+                            summaryBtn.innerText = 'Summary ⌄';
+                            summaryBtn.style.backgroundColor = 'transparent';
+                        }
+                    }
+                }
+            });
+
+            if (matches === 0) {
+                noResults.style.display = 'block';
+            } else {
+                noResults.style.display = 'none';
+            }
+        }
+
+        if (searchInput) {
+            searchInput.addEventListener('input', (e) => {
+                filterPublications(e.target.value);
+            });
+        }
+
+        // Tag filtering
+        window.filterByTag = function(tag) {
+            if (searchInput) {
+                searchInput.value = tag;
+                filterPublications(tag);
+                searchInput.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    </script>
+    
+    <style>
+        .pub-row:hover {
+            background-color: rgba(255, 255, 255, 0.02);
+        }
+        
+        .tag-keyword:hover {
+            background-color: rgba(99, 102, 241, 0.25) !important;
+            color: #a5b4fc !important;
+        }
+    </style>
+</Layout>
