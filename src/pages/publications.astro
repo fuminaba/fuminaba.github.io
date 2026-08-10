@@ -72,10 +72,10 @@ const publications = [
         </div>
 
         <!-- Table Container -->
-        <div style="width: 100%; overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--border); background-color: var(--surface); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);">
+        <div style="width: 100%; overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--border); background-color: var(--surface); box-shadow: var(--shadow-sm);">
             <table style="width: 100%; border-collapse: collapse; text-align: left; min-width: 600px;">
                 <thead>
-                    <tr style="background-color: rgba(0, 0, 0, 0.2); border-bottom: 1px solid var(--border);">
+                    <tr style="background-color: var(--surface-sunken); border-bottom: 1px solid var(--border);">
                         <th style="padding: 1.25rem 1rem; font-weight: 700; color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; width: 55%;">Title & Tags</th>
                         <th style="padding: 1.25rem 1rem; font-weight: 700; color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; width: 25%;">Authors & Venue</th>
                         <th style="padding: 1.25rem 1rem; font-weight: 700; color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; width: 20%; text-align: right;">Actions</th>
@@ -111,7 +111,7 @@ const publications = [
                                             );
                                         })}
                                     </div>
-                                    <div style="font-size: 0.8rem; font-style: italic; color: #818cf8;">
+                                    <div style="font-size: 0.8rem; font-style: italic; color: var(--accent-text);">
                                         {pub.venue} &bull; {pub.year}
                                     </div>
                                 </td>
@@ -131,7 +131,7 @@ const publications = [
                                             onclick={`toggleSummary('${pub.id}')`} 
                                             id={`btn-summary-${pub.id}`}
                                             class="btn btn-outline btn-sm" 
-                                            style="height: 32px; padding: 0 0.75rem; border-color: var(--primary); color: #818cf8;"
+                                            style="height: 32px; padding: 0 0.75rem; border-color: var(--primary); color: var(--accent-text);"
                                         >
                                             Summary ⌄
                                         </button>
@@ -140,7 +140,7 @@ const publications = [
                             </tr>
                             
                             <!-- Collapsible Summary Row -->
-                            <tr id={`summary-row-${pub.id}`} class="summary-row" style="display: none; background-color: rgba(99, 102, 241, 0.03); border-bottom: 1px solid var(--border);">
+                            <tr id={`summary-row-${pub.id}`} class="summary-row" style="display: none; background-color: var(--tag-bg); border-bottom: 1px solid var(--border);">
                                 <td colspan="3" style="padding: 1.5rem 2rem;">
                                     <h4 style="margin-top: 0; margin-bottom: 0.5rem; font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;">
                                         Key Contribution Summary
@@ -170,7 +170,7 @@ const publications = [
             if (summaryRow.style.display === 'none') {
                 summaryRow.style.display = 'table-row';
                 button.innerText = 'Summary ⌃';
-                button.style.backgroundColor = 'rgba(99, 102, 241, 0.1)';
+                button.style.backgroundColor = 'var(--tag-bg)';
             } else {
                 summaryRow.style.display = 'none';
                 button.innerText = 'Summary ⌄';
@@ -234,12 +234,12 @@ const publications = [
     
     <style>
         .pub-row:hover {
-            background-color: rgba(255, 255, 255, 0.02);
+            background-color: var(--row-hover);
         }
         
         .tag-keyword:hover {
-            background-color: rgba(99, 102, 241, 0.25) !important;
-            color: #a5b4fc !important;
+            background-color: var(--tag-bg-hover) !important;
+            color: var(--accent-text-soft) !important;
         }
     </style>
 </Layout>

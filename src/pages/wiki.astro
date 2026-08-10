@@ -21,6 +21,7 @@ const formatDate = (date: Date) => {
         year: 'numeric',
         month: 'short',
         day: 'numeric',
+        timeZone: 'UTC',
     });
 };
 ---
@@ -41,7 +42,7 @@ const formatDate = (date: Date) => {
                 Object.entries(groupedWiki).map(([series, items]) => (
                     <div>
                         <!-- Series header -->
-                        <h2 style="font-size: 1.4rem; color: #818cf8; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                        <h2 style="font-size: 1.4rem; color: var(--accent-text); border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
                             {series}
                         </h2>

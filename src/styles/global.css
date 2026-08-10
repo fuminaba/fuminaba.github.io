@@ -1,10 +1,20 @@
 /* src/styles/global.css */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
-:root {
+/* -------------------------------------------------------------------------
+   Theme tokens.
+   Dark is the default; `data-theme="light"` on <html> swaps the palette.
+   The attribute is set by an inline script in Layout.astro before paint.
+   ------------------------------------------------------------------------- */
+:root,
+:root[data-theme="dark"] {
+    color-scheme: dark;
+
     --bg-color: #0f1115;
     --surface: #1e2128;
     --surface-hover: #2a2e38;
+    --surface-subtle: rgba(30, 33, 40, 0.4);
+    --surface-sunken: rgba(0, 0, 0, 0.2);
     --primary: #6366f1;
     --primary-hover: #4f46e5;
     --text: #f3f4f6;
@@ -12,15 +22,107 @@
     --border: #374151;
     --radius: 12px;
     --transition: all 0.2s ease-in-out;
-    
+
     /* Extra design system colors for beautiful highlights */
     --accent: #a855f7; /* purple */
     --accent-hover: #9333ea;
     --gradient: linear-gradient(135deg, #a855f7, #6366f1);
     --success: #10b981;
     --success-bg: rgba(16, 185, 129, 0.1);
+    --success-border: rgba(16, 185, 129, 0.3);
     --warning: #f59e0b;
     --danger: #ef4444;
+
+    /* Accent text — readable highlight colors on the page background */
+    --accent-text: #818cf8;
+    --accent-text-soft: #a5b4fc;
+    --accent-text-purple: #c084fc;
+    --success-text: #34d399;
+    --warning-text: #fbbf24;
+
+    /* Chrome */
+    --header-bg: rgba(30, 33, 40, 0.75);
+    --footer-bg: rgba(15, 17, 21, 0.5);
+    --row-hover: rgba(255, 255, 255, 0.02);
+    --shadow-sm: 0 8px 32px rgba(0, 0, 0, 0.2);
+    --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.3);
+
+    /* Tags */
+    --tag-bg: rgba(99, 102, 241, 0.1);
+    --tag-bg-hover: rgba(99, 102, 241, 0.2);
+    --tag-border: rgba(99, 102, 241, 0.15);
+    --tag-border-hover: rgba(99, 102, 241, 0.3);
+    --tag-text: #818cf8;
+
+    /* Decorative icon tints */
+    --tint-indigo: rgba(99, 102, 241, 0.1);
+    --tint-indigo-border: rgba(99, 102, 241, 0.25);
+    --tint-purple: rgba(168, 85, 247, 0.1);
+    --tint-purple-border: rgba(168, 85, 247, 0.25);
+    --tint-green: rgba(16, 185, 129, 0.1);
+    --tint-green-border: rgba(16, 185, 129, 0.25);
+    --tint-amber: rgba(245, 158, 11, 0.1);
+    --tint-amber-border: rgba(245, 158, 11, 0.25);
+
+    /* Code */
+    --code-text: #f472b6;
+    --code-bg: rgba(255, 255, 255, 0.05);
+    --pre-bg: #1e2128;
+}
+
+:root[data-theme="light"] {
+    color-scheme: light;
+
+    --bg-color: #f7f8fa;
+    --surface: #ffffff;
+    --surface-hover: #eceff4;
+    --surface-subtle: #ffffff;
+    --surface-sunken: #f1f3f7;
+    --primary: #4f46e5;
+    --primary-hover: #4338ca;
+    --text: #111827;
+    --text-muted: #4b5563;
+    --border: #e2e5eb;
+
+    --accent: #9333ea;
+    --accent-hover: #7e22ce;
+    --gradient: linear-gradient(135deg, #9333ea, #4f46e5);
+    --success: #059669;
+    --success-bg: rgba(5, 150, 105, 0.1);
+    --success-border: rgba(5, 150, 105, 0.3);
+    --warning: #d97706;
+    --danger: #dc2626;
+
+    --accent-text: #4f46e5;
+    --accent-text-soft: #4338ca;
+    --accent-text-purple: #7e22ce;
+    --success-text: #047857;
+    --warning-text: #b45309;
+
+    --header-bg: rgba(255, 255, 255, 0.8);
+    --footer-bg: rgba(255, 255, 255, 0.6);
+    --row-hover: rgba(15, 23, 42, 0.03);
+    --shadow-sm: 0 4px 16px rgba(15, 23, 42, 0.06);
+    --shadow-lg: 0 12px 32px rgba(15, 23, 42, 0.12);
+
+    --tag-bg: rgba(79, 70, 229, 0.08);
+    --tag-bg-hover: rgba(79, 70, 229, 0.16);
+    --tag-border: rgba(79, 70, 229, 0.18);
+    --tag-border-hover: rgba(79, 70, 229, 0.35);
+    --tag-text: #4338ca;
+
+    --tint-indigo: rgba(79, 70, 229, 0.1);
+    --tint-indigo-border: rgba(79, 70, 229, 0.22);
+    --tint-purple: rgba(147, 51, 234, 0.1);
+    --tint-purple-border: rgba(147, 51, 234, 0.22);
+    --tint-green: rgba(5, 150, 105, 0.1);
+    --tint-green-border: rgba(5, 150, 105, 0.22);
+    --tint-amber: rgba(217, 119, 6, 0.12);
+    --tint-amber-border: rgba(217, 119, 6, 0.25);
+
+    --code-text: #be185d;
+    --code-bg: rgba(15, 23, 42, 0.06);
+    --pre-bg: #f8fafc;
 }
 
 * {
@@ -38,6 +140,7 @@ body {
     flex-direction: column;
     min-height: 100vh;
     overflow-x: hidden;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 }
 
 a {
@@ -75,7 +178,7 @@ strong {
 
 /* Layout Elements */
 header {
-    background-color: rgba(30, 33, 40, 0.75);
+    background-color: var(--header-bg);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
@@ -124,6 +227,42 @@ header {
     color: var(--text);
 }
 
+/* Theme toggle */
+.theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+    padding: 0;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background-color: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.theme-toggle:hover {
+    background-color: var(--surface-hover);
+    border-color: var(--text-muted);
+    color: var(--text);
+}
+
+.theme-toggle:focus-visible {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px var(--tag-bg-hover);
+}
+
+/* Show the icon for the theme you'd switch *to* */
+.theme-toggle .icon-sun { display: none; }
+.theme-toggle .icon-moon { display: block; }
+
+:root[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+:root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+
 main {
     flex: 1;
     padding: 3rem 2rem;
@@ -138,7 +277,7 @@ footer {
     text-align: center;
     font-size: 0.85rem;
     color: var(--text-muted);
-    background-color: rgba(15, 17, 21, 0.5);
+    background-color: var(--footer-bg);
 }
 
 /* Cards and Containers */
@@ -147,13 +286,13 @@ footer {
     border: 1px solid var(--border);
     border-radius: var(--radius);
     padding: 2rem;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--shadow-sm);
     transition: var(--transition);
 }
 
 .card:hover {
-    border-color: rgba(99, 102, 241, 0.4);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+    border-color: var(--tag-border-hover);
+    box-shadow: var(--shadow-lg);
 }
 
 /* Buttons */
@@ -203,20 +342,20 @@ footer {
 
 /* Tags and Badges */
 .tag {
-    background-color: rgba(99, 102, 241, 0.1);
-    color: #818cf8;
+    background-color: var(--tag-bg);
+    color: var(--tag-text);
     padding: 0.2rem 0.6rem;
     border-radius: 12px;
     font-size: 0.8rem;
     font-weight: 500;
-    border: 1px solid rgba(99, 102, 241, 0.15);
+    border: 1px solid var(--tag-border);
     display: inline-block;
     transition: var(--transition);
 }
 
 .tag:hover {
-    background-color: rgba(99, 102, 241, 0.2);
-    border-color: rgba(99, 102, 241, 0.3);
+    background-color: var(--tag-bg-hover);
+    border-color: var(--tag-border-hover);
 }
 
 .badge {
@@ -230,8 +369,8 @@ footer {
 
 .badge-processed {
     background-color: var(--success-bg);
-    color: #34d399;
-    border: 1px solid rgba(16, 185, 129, 0.3);
+    color: var(--success-text);
+    border: 1px solid var(--success-border);
 }
 
 /* Search Bar styling */
@@ -244,7 +383,7 @@ footer {
     width: 100%;
     padding: 0.75rem 1rem;
     padding-left: 2.5rem;
-    background-color: var(--bg-color);
+    background-color: var(--surface);
     border: 1px solid var(--border);
     border-radius: 8px;
     color: var(--text);
@@ -295,4 +434,15 @@ footer {
 
 ::-webkit-scrollbar-thumb:hover {
     background: var(--text-muted);
+}
+
+/* Syntax highlighting — Shiki emits the light theme inline and the dark theme
+   as --shiki-dark* custom properties (see markdown.shikiConfig in astro.config). */
+:root[data-theme="dark"] .astro-code,
+:root[data-theme="dark"] .astro-code span {
+    color: var(--shiki-dark) !important;
+    background-color: var(--shiki-dark-bg) !important;
+    font-style: var(--shiki-dark-font-style) !important;
+    font-weight: var(--shiki-dark-font-weight) !important;
+    text-decoration: var(--shiki-dark-text-decoration) !important;
 }

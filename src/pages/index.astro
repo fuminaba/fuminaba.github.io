@@ -1,6 +1,21 @@
 ---
 // src/pages/index.astro
+import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
+
+const pinnedPosts = await getCollection('blog', ({ data }) => data.pinned);
+const recentUpdates = pinnedPosts
+    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+    .slice(0, 5);
+
+const formatMonthYear = (date: Date) =>
+    date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', timeZone: 'UTC' });
+
+const summaryFor = (post: (typeof recentUpdates)[number]) =>
+    post.data.summary ?? (post.body ?? '').slice(0, 160).replace(/\*\*|\*/g, '').trim() + '...';
+
+// Cycled by position so entries stay visually distinct without needing a color per post
+const dotColors = ['var(--accent-text)', 'var(--success-text)', 'var(--accent-text-purple)', 'var(--warning-text)', 'var(--accent-text-soft)'];
 ---
 
 <Layout title="Home" description="Personal website and research portfolio of Fumiya Inaba, PhD Candidate in Interdisciplinary Oncology.">
@@ -19,7 +34,7 @@ import Layout from '../layouts/Layout.astro';
         </div>
         
         <div class="hero-text" style="flex: 2; min-width: 300px;">
-            <div style="display: inline-block; background-color: rgba(99, 102, 241, 0.1); color: #818cf8; padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.85rem; font-weight: 700; margin-bottom: 1rem; border: 1px solid rgba(99, 102, 241, 0.2);">
+            <div style="display: inline-block; background-color: var(--tag-bg); color: var(--tag-text); padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.85rem; font-weight: 700; margin-bottom: 1rem; border: 1px solid var(--tag-border);">
                 PhD Candidate @ UBC / BC Cancer
             </div>
             <h1 style="margin-bottom: 0.5rem; font-size: 3rem;">
@@ -41,6 +56,10 @@ import Layout from '../layouts/Layout.astro';
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
                     LinkedIn
                 </a>
+                <a href="https://orcid.org/0009-0007-7848-573X" target="_blank" rel="noopener noreferrer me" class="btn btn-outline">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="7.5" y1="16" x2="7.5" y2="10"/><circle cx="7.5" cy="7" r="0.75" fill="currentColor" stroke="none"/><path d="M11 16v-6h1.75a3 3 0 1 1 0 6H11z"/></svg>
+                    ORCID
+                </a>
             </div>
         </div>
     </section>
@@ -54,7 +73,7 @@ import Layout from '../layouts/Layout.astro';
         
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 1.5rem;">
             <div class="card" style="display: flex; flex-direction: column;">
-                <div style="width: 45px; height: 45px; border-radius: 10px; background: rgba(168, 85, 247, 0.1); border: 1px solid rgba(168, 85, 247, 0.25); display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; color: #c084fc;">
+                <div style="width: 45px; height: 45px; border-radius: 10px; background: var(--tint-purple); border: 1px solid var(--tint-purple-border); display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; color: var(--accent-text-purple);">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/></svg>
                 </div>
                 <h3 style="margin-top: 0; margin-bottom: 0.75rem; font-size: 1.25rem;">Early Cancer Detection</h3>
@@ -64,7 +83,7 @@ import Layout from '../layouts/Layout.astro';
             </div>
             
             <div class="card" style="display: flex; flex-direction: column;">
-                <div style="width: 45px; height: 45px; border-radius: 10px; background: rgba(99, 102, 241, 0.1); border: 1px solid rgba(99, 102, 241, 0.25); display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; color: #818cf8;">
+                <div style="width: 45px; height: 45px; border-radius: 10px; background: var(--tint-indigo); border: 1px solid var(--tint-indigo-border); display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; color: var(--accent-text);">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                 </div>
                 <h3 style="margin-top: 0; margin-bottom: 0.75rem; font-size: 1.25rem;">Reducing Overtreatment</h3>
@@ -74,7 +93,7 @@ import Layout from '../layouts/Layout.astro';
             </div>
             
             <div class="card" style="display: flex; flex-direction: column;">
-                <div style="width: 45px; height: 45px; border-radius: 10px; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.25); display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; color: #34d399;">
+                <div style="width: 45px; height: 45px; border-radius: 10px; background: var(--tint-green); border: 1px solid var(--tint-green-border); display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; color: var(--success-text);">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
                 </div>
                 <h3 style="margin-top: 0; margin-bottom: 0.75rem; font-size: 1.25rem;">Prognostic Tools</h3>
@@ -84,7 +103,7 @@ import Layout from '../layouts/Layout.astro';
             </div>
 
             <div class="card" style="display: flex; flex-direction: column;">
-                <div style="width: 45px; height: 45px; border-radius: 10px; background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.25); display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; color: #fbbf24;">
+                <div style="width: 45px; height: 45px; border-radius: 10px; background: var(--tint-amber); border: 1px solid var(--tint-amber-border); display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; color: var(--warning-text);">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
                 </div>
                 <h3 style="margin-top: 0; margin-bottom: 0.75rem; font-size: 1.25rem;">Accelerated, Responsible Research</h3>
@@ -107,8 +126,8 @@ import Layout from '../layouts/Layout.astro';
         
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
             <!-- Category 1 -->
-            <div style="background-color: rgba(30, 33, 40, 0.4); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem;">
-                <h3 style="margin-top: 0; font-size: 1.15rem; color: #818cf8; border-bottom: 1px solid var(--border); padding-bottom: 0.75rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+            <div style="background-color: var(--surface-subtle); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem;">
+                <h3 style="margin-top: 0; font-size: 1.15rem; color: var(--accent-text); border-bottom: 1px solid var(--border); padding-bottom: 0.75rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
                     Machine Learning & AI
                 </h3>
@@ -123,8 +142,8 @@ import Layout from '../layouts/Layout.astro';
             </div>
 
             <!-- Category 2 -->
-            <div style="background-color: rgba(30, 33, 40, 0.4); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem;">
-                <h3 style="margin-top: 0; font-size: 1.15rem; color: #a5b4fc; border-bottom: 1px solid var(--border); padding-bottom: 0.75rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+            <div style="background-color: var(--surface-subtle); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem;">
+                <h3 style="margin-top: 0; font-size: 1.15rem; color: var(--accent-text-soft); border-bottom: 1px solid var(--border); padding-bottom: 0.75rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
                     Digital Pathology & Image Processing
                 </h3>
@@ -139,8 +158,8 @@ import Layout from '../layouts/Layout.astro';
             </div>
 
             <!-- Category 3 -->
-            <div style="background-color: rgba(30, 33, 40, 0.4); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem;">
-                <h3 style="margin-top: 0; font-size: 1.15rem; color: #c084fc; border-bottom: 1px solid var(--border); padding-bottom: 0.75rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+            <div style="background-color: var(--surface-subtle); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem;">
+                <h3 style="margin-top: 0; font-size: 1.15rem; color: var(--accent-text-purple); border-bottom: 1px solid var(--border); padding-bottom: 0.75rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
                     Research Programming & Design
                 </h3>
@@ -159,36 +178,25 @@ import Layout from '../layouts/Layout.astro';
     <section>
         <h2 style="margin-bottom: 2rem;">Recent Updates</h2>
         
-        <div style="position: relative; border-left: 2px solid var(--border); margin-left: 1rem; padding-left: 2rem; display: flex; flex-direction: column; gap: 2rem;">
-            <!-- Timeline Item 1 -->
-            <div style="position: relative;">
-                <div style="position: absolute; left: -39px; top: 4px; width: 14px; height: 14px; border-radius: 50%; background: #818cf8; border: 3px solid var(--bg-color); box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);"></div>
-                <div style="font-size: 0.85rem; color: var(--text-muted); font-weight: 700; margin-bottom: 0.25rem;">April 2026</div>
-                <h3 style="margin-top: 0; font-size: 1.1rem; margin-bottom: 0.5rem;">Advanced to PhD Candidacy</h3>
-                <p style="font-size: 0.9rem; margin-bottom: 0;">
-                    Successfully passed the qualifying exams and advanced to PhD candidacy in the Interdisciplinary Oncology Program at UBC.
-                </p>
+        {recentUpdates.length === 0 ? (
+            <p>No updates yet. Check back soon!</p>
+        ) : (
+            <div style="position: relative; border-left: 2px solid var(--border); margin-left: 1rem; padding-left: 2rem; display: flex; flex-direction: column; gap: 2rem;">
+                {recentUpdates.map((post, index) => (
+                    <div style="position: relative;">
+                        <div style={`position: absolute; left: -39px; top: 4px; width: 14px; height: 14px; border-radius: 50%; background: ${dotColors[index % dotColors.length]}; border: 3px solid var(--bg-color);`}></div>
+                        <div style="font-size: 0.85rem; color: var(--text-muted); font-weight: 700; margin-bottom: 0.25rem;">{formatMonthYear(post.data.date)}</div>
+                        <h3 style="margin-top: 0; font-size: 1.1rem; margin-bottom: 0.5rem;">
+                            <a href={`/blog/${post.id}`} style="color: var(--text); text-decoration: none;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text)'">
+                                {post.data.title}
+                            </a>
+                        </h3>
+                        <p style="font-size: 0.9rem; margin-bottom: 0;">
+                            {summaryFor(post)}
+                        </p>
+                    </div>
+                ))}
             </div>
-            
-            <!-- Timeline Item 2 -->
-            <div style="position: relative;">
-                <div style="position: absolute; left: -39px; top: 4px; width: 14px; height: 14px; border-radius: 50%; background: #34d399; border: 3px solid var(--bg-color);"></div>
-                <div style="font-size: 0.85rem; color: var(--text-muted); font-weight: 700; margin-bottom: 0.25rem;">March 2026</div>
-                <h3 style="margin-top: 0; font-size: 1.1rem; margin-bottom: 0.5rem;">Paper Published in SPIE Proceedings</h3>
-                <p style="font-size: 0.9rem; margin-bottom: 0;">
-                    Our paper <em>"Instance scoring via distillation of multiple instance classifiers for interpretable digital pathology"</em> was published in the SPIE Proceedings Digital Library.
-                </p>
-            </div>
-            
-            <!-- Timeline Item 3 -->
-            <div style="position: relative;">
-                <div style="position: absolute; left: -39px; top: 4px; width: 14px; height: 14px; border-radius: 50%; background: #c084fc; border: 3px solid var(--bg-color);"></div>
-                <div style="font-size: 0.85rem; color: var(--text-muted); font-weight: 700; margin-bottom: 0.25rem;">January 2026</div>
-                <h3 style="margin-top: 0; font-size: 1.1rem; margin-bottom: 0.5rem;">Co-authored Paper in "The Breast"</h3>
-                <p style="font-size: 0.9rem; margin-bottom: 0;">
-                    Co-authored a paper titled <em>"Large-scale DNA organization analysis of primary breast cancers for prediction of axillary lymph node metastases"</em> published in the journal <em>The Breast</em>.
-                </p>
-            </div>
-        </div>
+        )}
     </section>
 </Layout>
