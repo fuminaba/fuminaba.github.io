@@ -12,7 +12,9 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/mdx": "^5.0.6",
-    "astro": "^6.3.7"
+    "@astrojs/cloudflare": "^14.2.0",
+    "@astrojs/mdx": "^7.0.5",
+    "astro": "^7.2.0",
+    "wrangler": "^4.120.1"
   }
 }
