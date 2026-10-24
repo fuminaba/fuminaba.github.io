@@ -54,25 +54,30 @@ The `$` symbol denotes the start of your terminal. Example below.
 In this case, `$` = `C:\Users\finaba`  
 
 **To create from scratch:**
-```{cmd}
+
+```console
 # Type in the following lines in your command prompt or terminal
 $ conda create --name myenv
 $ conda activate myenv
 ```
+
 **To create from a file:**  
-```{cmd}
+
+```console
 $ conda env create -f ./path/to/env.yaml
 ```
 
 ### Step 3 - Reuse a created environment
 To use or 'activate' a virtual environment:
-```{cmd}
+
+```console
 $ conda activate myenv
 ```
 
 ### Step 4 - To save a virtual environment
 To save a virtual environment into a file is quite simple:
-```{cmd}
+
+```console
 $ conda env export > ./path/to/env.yaml
 ```
 

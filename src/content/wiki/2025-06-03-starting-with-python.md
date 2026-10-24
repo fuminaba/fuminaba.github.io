@@ -34,28 +34,34 @@ Once this has been set up, you are ready to start writing code!
 When you want to run Python code, you first tell the computer (using the command prompt or terminal) that you want to use the Python interpreter (app) and then which file you want the Python interpreter to read. 
 This will look like this on Windows:
 </p>
-```{cmd}
+
+```console
 C:/Users/finaba> python path/to/file.py
 ```
+
 <p style = 'text-align:justify;'>
 Now there are some caveats. We talked about virtual environments before - how does the computer know which copy of Python to use?
 When you have a virtual environment activated, the command prompt/terminal will automatically search for the copy of Python in that environment.
 </p>
-```{cmd}
+
+```console
 C:/Users/finaba> conda activate my_env
 (my_env) C:/Users/finaba> python path/to/file.py # This will use the Python app in the my_env environment.
 ```
+
 <p style = 'text-align: justify;'>
 When you <b>DON'T</b> have an environment activated, the computer will search for the first available Python saved in it's <b><i>PATH variable</i></b>.
 The PATH variable stores the locations of specific apps and libraries - so when you tell the computer to do something through the command prompt/terminal, 
 it will search through the apps/libraries stored in its PATH variable. If nothing is found, it will give you an error - saying it doesn't understand what you want to do.
 For example:
 </p>
-```{cmd}
+
+```console
 C:/Users/finaba> jenga # jenga is not a program that exists.
 # Output:
 'jenga' is not recognized as an internal or external command, operable program, or batch file.
 ```
+
 <p style = 'text-align: justify;'>
 So when you want to run Python code, it's important to tell the computer <b>WHICH</b> Python to use and <b>WHERE</b> it is.
 Environments are a convenient way to do this, and IDEs will do this under the hood.
@@ -65,21 +71,26 @@ Environments are a convenient way to do this, and IDEs will do this under the ho
 <p style = 'text-align: justify;'>
 Create an empty file, using VSCode, named <code>hello.py</code>
 </p>
-```{python}
+
+```python
 import math
 print("I have", math.pi, "slices of pie")
 print("And the square root of 2 is", math.sqrt(2))
 ```
+
 <p style = 'text-align: justify;'>
 There are two ways to execute this code. The first way (simplest way) is to click the Play button which you will likely see near the top right corner.<br>
 <img src = "/assets/vscode_play.PNG"/><br>
 The second way is to use the terminal by first goint to <code>Terminal</code> in the tool bar and clicking <code>New Terminal</code>.
 Make sure your environment is activated, then type the following commands:
 </p>
-```{cmd}
+
+```console
 $ python hello.py
 ```
+
 You should see:   
+
 ```
 I have 3.141592653589793 slices of pie  
 And the square root of 2 is 1.4142135623730951

@@ -4,21 +4,21 @@ import Layout from '../layouts/Layout.astro';
 
 const projects = [
     {
-        id: "lira",
-        title: "LiRA (Literature Review Assistant)",
-        subtitle: "AI-Powered Academic Search & Automation Platform",
-        status: "MVP Beta",
-        description: "An intelligent literature review assistant built for biomedical and scientific researchers. LiRA helps users discover, summarize, and monitor academic publications dynamically from PubMed, arXiv, and OpenAlex. It features an automated email alert system delivering periodic personalized updates based on the user's research interest profile.",
+        id: "phdcode",
+        title: "phdcode",
+        subtitle: "Open-Source Literature RAG Tool for Research Students",
+        status: "Open Source",
+        description: "phdcode keeps the papers that you read, finds new papers each day, and lets an AI agent answer questions from them, with each claim cited by title, page and exact quote. It has no chat of its own: an MCP server gives its tools to any MCP client, such as Claude Code. It started as LiRA, a hosted literature review assistant, and is now an open-source tool that runs on your own machine.",
         features: [
-            "Natural language multi-database search (PubMed, arXiv, OpenAlex) with date parsing",
-            "Automated review schedules sending curated summaries of new papers directly to email",
-            "Text extraction, key insights generation, and keyword tagging powered by Gemini",
-            "Seamless local synchronization with Zotero collections and drag-and-drop PDF parsing",
-            "User credit billing system integrated with Stripe checkout"
+            "Stores papers from PubMed, arXiv and OpenAlex, and parses PDFs into chunks with pages, sections, tables and figures",
+            "Hybrid search (embeddings in pgvector + BM25) over papers and passages",
+            "Daily saved searches: a model triages each new paper against your library, and new papers wait on a Triage page until you keep them",
+            "Model-written briefs: your research interests, which papers to read first, and a summary of findings for each day",
+            "A web interface with the papers, figures, digests, an Ask page, and daily study questions"
         ],
-        techStack: ["Django", "Python", "Gemini Pro API", "Stripe API", "Vanilla CSS", "HTML5", "PostgreSQL"],
-        link: "https://lira.fuminaba.com",
-        github: null, // Private repo
+        techStack: ["Python", "PostgreSQL", "pgvector", "MCP", "FastAPI", "Ollama", "llama.cpp"],
+        link: "https://phdcode.fuminaba.com",
+        github: "https://github.com/fuminaba/phdcode",
     }
 ];
 ---
@@ -58,7 +58,7 @@ const projects = [
                             {proj.link && (
                                 <a href={proj.link} target="_blank" rel="noopener noreferrer" class="btn btn-sm">
                                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                                    Visit App
+                                    Website
                                 </a>
                             )}
                             {proj.github && (
